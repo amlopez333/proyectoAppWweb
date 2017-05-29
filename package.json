@@ -1,0 +1,49 @@
+{
+  "name": "proyectoAppWweb",
+  "version": "1.0.0",
+  "description": "proyecto de aplicaciones web. Online broker. ",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amlopez333/proyectoAppWweb.git"
+  },
+  "keywords": [
+    "nodejs",
+    "js",
+    "express",
+    "react",
+    "broker"
+  ],
+  "author": "Andy Lopez & Olman Cheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amlopez333/proyectoAppWweb/issues"
+  },
+  "homepage": "https://github.com/amlopez333/proyectoAppWweb",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.2",
+    "classnames": "^2.2.5",
+    "express": "^4.15.3",
+    "immutable": "^3.8.1",
+    "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-addons-pure-render-mixin": "^15.5.2",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-transition-group": "^1.1.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^2.6.1"
+  }
+}
