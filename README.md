@@ -4,4 +4,4 @@ Para instalar las dependencias nada mas hay que hacer
 >npm install
 
 
-[http://udacity.github.io/git-styleguide/](Formato de commits)
+[Formato de commits]([http://udacity.github.io/git-styleguide/)
