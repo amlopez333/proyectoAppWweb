@@ -4,7 +4,9 @@
   "description": "proyecto de aplicaciones web. Online broker. ",
   "main": "sever.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/webpack -p --progress --colors src/index.jsx",
+    "devbuild": "node_modules/.bin/webpack --progress --colors src/index.jsx"
   },
   "repository": {
     "type": "git",
@@ -25,10 +27,12 @@
   "homepage": "https://github.com/amlopez333/proyectoAppWweb",
   "dependencies": {
     "axios": "^0.16.1",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.17.2",
     "classnames": "^2.2.5",
     "express": "^4.15.3",
     "immutable": "^3.8.1",
+    "mongoose": "^4.11.3",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-pure-render-mixin": "^15.5.2",
