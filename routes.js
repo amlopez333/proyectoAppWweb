@@ -34,7 +34,27 @@ router.post('/login', function(req, res, next){
         return res.status(200).json({userId: result._id});
     }).and([{email: email},{password: password}])
 });
-
+router.post('/register', function(req, res, next){
+    const user = new userSchema({
+        name: req.body.name,
+        lastName: req.body.lastName,
+        ssn: req.body.ssn,
+        email: req.body.email,
+        password: req.body.password,
+        accountType: req.body.accountType,
+        accountNumber: req.body.accountNumber,
+        currentCashBalance: req.body.currentCashBalance,
+        portfolio: []
+    });
+    user.save(function(error, result){
+        if(error){
+            connection.close();
+            return res.status(200).json({message: 'Error selling ' + error.message});
+        }
+        connection.close();
+        return res.status(200).json({message: 'Registered'})  
+    })
+});
 router.post('/buy/:userId', function(req, res, next){
     const userId = req.params.userId;
     const ssn = req.body.ssn;
