@@ -15,6 +15,7 @@ Para instalar las dependencias nada mas hay que hacer
 4. En la carpeta `src` es donde vamos a poner todos nuestros componentes de `React`.  En la carpeta `dist` es donde va a ir todo el `HTML` y el `bundle.js`. Ahí tiene que ir el `index.html`. Ya no ocupa utilizar lo del `create-react-app` para correr `webpack-dev-server`. Solamente ocupa correr el script.
    En Linux
    >.\webpackdevserver.sh
+
    En Winhoes
    >wepackdevserver.bat
 5. Más adelante vamos a dejar de utilizar `webpack-dev-server` porque vamos a conectar con el Backend (`server.js`). Esto seguro ya para martes en la tarde. Para crear el `bundle.js` a pata corra el commmando
@@ -29,12 +30,16 @@ Para instalar las dependencias nada mas hay que hacer
 ### Rutas
 `post(/login, function(req, rest, next))`
 Autentica al usuario. En el cuerpo del `(req)` de la solicitud debe venir el email y contraseña.
+
 `post(/register, function(req, rest, next))`
 Registra un usuario. En el cuerpo del `(req)` de la solicitud debe venir todo lo especificado por el esquema en `models/user.js`.
+
 `post(/buy/:userId, function(req, rest, next))`
 Compra una acción. Como parámetro del `(req)` debe venir el userId. En el cuerpo del `(req)` de la solicitud debe venir todo lo especificado por el esquema en `models/buy.js`.
+
 `post(/sell/:userId, function(req, rest, next))`
 Vende una acción. Como parámetro del `(req)` debe venir el userId. En el cuerpo `(req)` de la solicitud debe venir todo lo especificado por el esquema en `models/sell.js` y debe venir el `id` del ítem específico a vender del portafolio.
+
 `get(/portafolios/:userId, function(req, rest, next))`
 Retorna el contenido del portafolio de dicho usuario. Como parámetro del `(req)` debe venir el userId. 
    
