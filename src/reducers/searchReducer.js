@@ -14,7 +14,7 @@ export default function reducer (state = initialState, action){
             return{
                 ...state,
                 stock: action.payload.stk,
-                result: action.payload.result !== undefined? action.payload.result:null,
+                result: action.payload.result !== undefined ? action.payload.result:null,
                 isFetching: false,
                 fetchError: false
             }

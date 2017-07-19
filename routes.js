@@ -151,7 +151,7 @@ router.get('/portfolios/:userId', function(req, res, next){
     });
     userSchema.findById(userId, function(error, user){
         connection.close();
-        return res.status(200).json({message: 'OK', data: user.portfolio});
+        return res.status(200).json({message: 'OK', data: {currentCashBalance: user.currentCashBalance, portfolio: user.portfolio}});
     })
 });
 
