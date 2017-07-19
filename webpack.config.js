@@ -1,25 +1,26 @@
 var webpack = require('webpack');
+const path = require('path');
 module.exports = {
     entry: ["webpack-dev-server/client?http://localhost:8080",
     "webpack/hot/only-dev-server",
-    "./src/index.jsx"
+    "./src/app.js"
     ],
     module: {
         loaders: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'react-hot!babel'
+            loader: 'react-hot-loader!babel-loader'
         },
         {
             test: /\.css$/,
-            loader: 'style!css'
+            loader: 'style-loader!css-loader'
         }]
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
     output: {
-        path: './dist',
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         filename: 'bundle.js'
     },
