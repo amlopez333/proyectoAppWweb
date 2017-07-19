@@ -85,16 +85,30 @@ var reducer = function (state = Map(), action) {
     switch (action.type) {
         case 'SET_STATE':
             return setState(state, action.state);
-        case 'SEARCH':
-            return search(state, action.filter);
-        case 'CANCEL_SEARCH':
-            return cancelSearch(state);
-        case 'UPDATE_REVISION_DATE':
-            return updateRevisionDate(state, action.itemId, action.date);
-        case 'ADD_ITEM':
-            return addItem(state, action.placa, action.codigo, action.marca, action.modelo, action.ubicacion, action.responsable, action.idResponsable, action.categoria, action.idCategoria, action.descripcion);
-        case 'HEADER_CHANGE':
-            return headerChange(state, action.title, action.desc, action.iconNm);
+        case "SEARCH_SUCCESS":
+            //console.log('SUCC')
+            return{
+                state,
+                stock: action.payload.stk,
+                result: action.payload.result !== undefined ? action.payload.result:null,
+                isFetching: false,
+                fetchError: false
+            }
+        case "SEARCH_FAILED":
+            //console.log('FAIL')
+            return{
+                state,
+                isFetching: false,
+                fetchError: action.fetchFail,
+                result: null
+            }
+        case "SEARCH_IS_FETCHING":
+            //console.log('FETCH')
+            return{
+                state,
+                isFetching: true
+            }
+        default: return state;
 
     };
 };

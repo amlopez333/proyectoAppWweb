@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { List, Map } from 'immutable';
-import { compose, createStore } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import { Router, Route, BrowserRouter, IndexRoute, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -22,7 +23,9 @@ import axios from 'axios'; // hacer requests http
 const createStoreDevTools = compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore);
 //Instantiate new redux store
-const store = createStoreDevTools(reducer);
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = createStoreWithMiddleware(reducer);
+//const store = createStoreDevTools(reducer);
 
 const getPortafolio = function () {
     return axios.get('http://127.0.0.1:3000/portfolios/596de5f4946bf6c3fb2fd999');
@@ -60,6 +63,7 @@ store.dispatch({
         headers:['Ticker', 'Nombre', 'Precio ($)', 'Cantidad', 'Fecha', 'Precio Actual ($)', 'Rendimiento (%)', 'Valor Actual', ''],
         title: 'Portafolio',
         iconName: 'glyphicon glyphicon-book',
+        
     }
 });
 {/*<Route path='/search' component={InventoryFormContainer} />*/}

@@ -30,9 +30,9 @@ export default Header;
 
 const mapStateToProps = function (state) {
     return {
-        title: state.get('title'),
-        description: state.get('description'),
-        iconName: state.get('iconName')
+        title: state.title,
+        description: state.description,
+        iconName: state.icon
     };
 }.bind(this);
 
