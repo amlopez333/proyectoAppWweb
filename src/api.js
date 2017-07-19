@@ -10,7 +10,7 @@ function fetchStocks(func="TIME_SERIES_DAILY", stock, interval){
     } 
     return axios.get(encodedURI)
     .then( (response)=>{
-        console.log('fetch')
+        //console.log('fetch')
         //console.log(response.data['Time Series (Daily)'])
         switch(func){
             case "TIME_SERIES_INTRADAY":

@@ -10,7 +10,7 @@ export function fetchStock(fun, stk){
             dispatch(fetchingSuccess(stk, response))
         })
         .catch((errors) => {
-            //console.log('fail')
+            console.log(errors)
             dispatch(fetchingFail(true))
         })
   }
