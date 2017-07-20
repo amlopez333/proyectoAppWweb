@@ -3,12 +3,9 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { NavBarContainer } from './NavBar';
 import { HeaderContainer } from './Header';
 import { connect } from 'react-redux';
-import { Router, Route, BrowserRouter, IndexRoute, Switch } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
 //import { NavBarContainer } from './components/NavBar';
 import { HomeContainer } from './Home';
 import { SearchBarContainer} from './SearchBar';
-const history = createBrowserHistory();
 const App = React.createClass({
     mixins: [PureRenderMixin],
     render: function () {

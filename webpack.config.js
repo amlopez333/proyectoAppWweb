@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-const path = require('path');
+var path = require('path');
 module.exports = {
     entry: ["webpack-dev-server/client?http://localhost:8080",
     "webpack/hot/only-dev-server",
