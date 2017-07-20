@@ -31,14 +31,14 @@ const NavBar = React.createClass({
     /** ------------------------------------------------ */
     render: function () {
         return (
-            <Navbar inverse collapseOnSelect  className="navbar-fixed-top" role="navigation">
+            <Navbar inverse collapseOnSelect  className="navbar-fixed-top NavBar" role="navigation">
 
                 <Navbar.Header>
                     <div className="brandtitle">
                         {/*<Link > </Link>*/}
-                        <nobr><h1 className="scaps nobr">Daquant</h1></nobr><nobr> - Trader </nobr>
+                        <nobr><h1 className="scaps nobr MainTitle">Daquant</h1></nobr><nobr><h3 className="SubTitle"> - Trader - </h3></nobr>
                     </div>
-                    <Navbar.Toggle className="navbar-toggle navbar-brand" data-toggle="collapse" data-target="navbar-ex1-collapse" />
+                    <Navbar.Toggle className="navbar-toggle navbar-brand Toggle" data-toggle="collapse" data-target="navbar-ex1-collapse" />
                 </Navbar.Header>
                 {/*<!-- Top bar Menu Items -->*/}
                 <ul className="nav navbar-right top-nav">
@@ -55,17 +55,17 @@ const NavBar = React.createClass({
 
                     <ul className='nav navbar-nav side-nav'>
 
-                        <li className="active">< Link to='portafolio' onClick={this.portfolioHeader} >
+                        <li className="MenuOption">< Link to='portafolio' onClick={this.portfolioHeader} >
                             <i className="glyphicon glyphicon-book"></i>&nbsp; 
                             Portafolio</Link>
                         </li>
 
-                        <li ><Link to='search' onClick={this.searchHeader}>
+                        <li className="MenuOption"><Link to='search' onClick={this.searchHeader}>
                             <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
                             Compra</Link>
                         </li>
 
-                        <li >
+                        <li className="MenuOption">
                             <a className='faq'>
                             <i className="glyphicon glyphicon-info-sign"></i>&nbsp;
                             Preguntas Frecuentes</a>
