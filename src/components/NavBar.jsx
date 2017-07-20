@@ -3,9 +3,9 @@ import { Row, Col, Nav, Navbar } from 'react-bootstrap/lib';
 import { NavbarHeader, NavbarBrand, NavbarCollapse, NavItem, NavbarToggle } from 'react-bootstrap/lib';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
-const browserHistory = createBrowserHistory()
+import { Link, browserHistory } from 'react-router';
+//import createBrowserHistory from 'history/createBrowserHistory';
+//const browserHistory = createBrowserHistory();
 import * as actions from '../actions/action_creators';
 //import headerChange from '../action_creators';
 
@@ -20,12 +20,12 @@ const NavBar = React.createClass({
     },
     searchHeader: function (evt) {
         evt.preventDefault();
-        this.props.actions.headerChange('Búsqueda', 'Comprar Acciones', 'glyphicon glyphicon-plus-sign');
+        //this.props.actions.headerChange('Búsqueda', 'Comprar Acciones', 'glyphicon glyphicon-plus-sign');
         browserHistory.push('/search');
     },
     faqHeader: function(evt){
         evt.preventDefault();
-        this.props.actions.headerChange('Búsqueda', 'Comprar Acciones', 'glyphicon glyphicon-plus-sign');
+        //this.props.actions.headerChange('Búsqueda', 'Comprar Acciones', 'glyphicon glyphicon-plus-sign');
         browserHistory.push('/faq');
     },
     /** ------------------------------------------------ */

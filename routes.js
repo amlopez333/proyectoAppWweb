@@ -64,7 +64,7 @@ router.post('/buy/:userId', function(req, res, next){
     const amount = Number(req.body.amount);
     mongoose.connect(mongoDB);
     const connection = mongoose.connection;
-    connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
+    //connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
     connection.on('error', function(error){
         connection.close();
         error.status = 500;
@@ -97,7 +97,7 @@ router.post('/sell/:userId', function(req, res, next){
     console.log(_id);
     mongoose.connect(mongoDB);
     const connection = mongoose.connection;
-    connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
+    //connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
     connection.on('error', function(error){
         connection.close();
         error.status = 500;
@@ -143,7 +143,7 @@ router.get('/portfolios/:userId', function(req, res, next){
     const userId = req.params.userId;
     mongoose.connect(mongoDB);
     const connection = mongoose.connection;
-    connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
+    //connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
     connection.on('error', function(error){
         connection.close();
         error.status = 500;

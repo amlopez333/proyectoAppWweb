@@ -25,13 +25,8 @@ const App = React.createClass({
 
                         <HeaderContainer />
                         {/* Contenido*/}
-                        <main>
-                        <Switch>
-                            <Route exact path="/" component={HomeContainer} />
-                            <Route path="/portfolio" component={HomeContainer} />
-                            <Route path="/search" component={SearchBarContainer} />
-                        </Switch>
-                        </main>
+                        {this.props.children}
+
 
                     </div>
                 </div>
@@ -42,11 +37,11 @@ const App = React.createClass({
 
 export default App;
 
-function select(state) {
+/*function select(state) {
   return {
     data: state
   };
 }
 
 // Wrap the component to inject dispatch and state into it
-export const AppContainer =  connect(select)(App);
+export const AppContainer =  connect(select)(App);*/

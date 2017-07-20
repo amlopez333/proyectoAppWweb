@@ -4,11 +4,11 @@ import { List, Map } from 'immutable';
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
-import { Router, Route, BrowserRouter, IndexRoute, Switch } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
-const history = createBrowserHistory();
+import { Router, Route, browserHistory, IndexRoute} from 'react-router';
+//import createBrowserHistory from 'history/createBrowserHistory';
+//const history = createBrowserHistory();
 import reducer from './reducers/reducer';
-import {AppContainer} from './components/App';
+import App from './components/App';
 import { NavBarContainer } from './components/NavBar';
 import { HomeContainer } from './components/Home';
 import { SearchBarContainer} from './components/SearchBar';
@@ -69,10 +69,14 @@ store.dispatch({
 {/*<Route path='/search' component={InventoryFormContainer} />*/}
         {/*<Route path='/faq' component={InventoryFormContainer} />*/}
 const routes =
-  <div>
-    <AppContainer/>
+    <Route path='/' component={App} >
+        <IndexRoute component={HomeContainer} />
+        <Route path='/portfolio' component={HomeContainer} />
+        <Route path='/search' component={SearchBarContainer} />
+    </Route>
+                            
     
-  </div>  
+  
 
 /*
 const items = List.of(
@@ -82,7 +86,7 @@ const items = List.of(
 const headers = List.of(Array('Id', 'Placa', 'Código', 'Marca', 'Modelo')); */
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter history = {history}>{routes}</BrowserRouter>
+        <Router history = {browserHistory}>{routes}</Router>
     </Provider>,
     document.getElementById('root'),
 
