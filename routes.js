@@ -24,14 +24,18 @@ router.post('/login', function(req, res, next){
         error.status = 500;
         return next(error);
     });
-    db.once('open', function() {
-  console.log('tuna');
+    connection.once('open', function() {
+    console.log('tuna');
 });
     userSchema.findOne(function(error, result){
         if(error){
             return res.status(200).json({message: 'Invalid Login: ' + error.message});
         };
-        return res.status(200).json({userId: result._id});
+        connection.close();
+        if(result){
+            return res.status(200).json({userId: result._id});
+        }
+        return res.status(420).json({message: 'Invalid Login'})
     }).and([{email: email},{password: password}])
 });
 router.post('/register', function(req, res, next){
@@ -41,15 +45,23 @@ router.post('/register', function(req, res, next){
         ssn: req.body.ssn,
         email: req.body.email,
         password: req.body.password,
-        accountType: req.body.accountType,
-        accountNumber: req.body.accountNumber,
-        currentCashBalance: req.body.currentCashBalance,
+        accountType: 'Savings Account',
+        accountNumber: '002-156975-12264',
+        currentCashBalance: 10000,
         portfolio: []
+    });
+    mongoose.connect(mongoDB);
+    const connection = mongoose.connection;
+    //connection.on('error', console.error.bind(console, 'MongoDB connection error: '));
+    connection.on('error', function(error){
+        connection.close();
+        error.status = 500;
+        return next(error);
     });
     user.save(function(error, result){
         if(error){
             connection.close();
-            return res.status(200).json({message: 'Error selling ' + error.message});
+            return res.status(420).json({message: 'Error registering ' + error.message});
         }
         connection.close();
         return res.status(200).json({message: 'Registered'})  
@@ -79,7 +91,7 @@ router.post('/buy/:userId', function(req, res, next){
     });
     buy.save(function(error, result){
         if(error){
-            return res.status(200).json({message: 'Error buying ' + error.message});
+            return res.status(420).json({message: 'Error buying ' + error.message});
         }
         userSchema.findByIdAndUpdate(userId, [{portfolio: {ticker: ticker, name: name, priceBought: price, amount: amount}}], {new: true, upsert: true})
         connection.close();
@@ -89,7 +101,7 @@ router.post('/buy/:userId', function(req, res, next){
 router.post('/sell/:userId', function(req, res, next){
     const userId = req.params.userId;
     const _id = req.body.portfolioId;
-    const ssn = req.body.ssn;
+    //const ssn = req.body.ssn;
     const ticker = req.body.ticker;
     const name = req.body.name
     const price = req.body.price;
@@ -105,7 +117,7 @@ router.post('/sell/:userId', function(req, res, next){
     });
     console.log('tuna');
     const sell = new sellSchema({
-        ssn: ssn,
+        userId: userId,
         ticker: ticker,
         name: name,
         price: price,
@@ -114,13 +126,13 @@ router.post('/sell/:userId', function(req, res, next){
     sell.save(function(error, result){
         if(error){
             connection.close();
-            return res.status(200).json({message: 'Error selling ' + error.message});
+            return res.status(420).json({message: 'Error selling ' + error.message});
         }   //connection.close();
     });
     userSchema.findById(userId, function(error, user){
             if(error){
                 connection.close();
-                return res.status(200).json({message: 'Error selling ' + error.message});
+                return res.status(420).json({message: 'Error selling ' + error.message});
             }
             if(user.portfolio.id(_id).amount - amount === 0){
                 user.portfolio.id(_id).remove();
@@ -131,6 +143,7 @@ router.post('/sell/:userId', function(req, res, next){
                 return res.status(203).json({message: 'Created'});
             }
             user.portfolio.id(_id).amount -= amount
+            user.currentCashBalance += price*amount - 6.75
             //console.log(user.portfolio.id(_id).amount);
             user.save(function(error, result){
                 console.log(error, result);
