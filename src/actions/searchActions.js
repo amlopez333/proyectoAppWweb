@@ -1,4 +1,4 @@
-import api from '../api'
+/*import api from '../api'
 
 export function fetchStock(fun, stk){
     return dispatch => {
@@ -34,9 +34,8 @@ export function fetchingSuccess(stk,result){
     //console.log('fetchSuccess')
     return{
         type: 'SEARCH_SUCCESS',
-        payload: {
             stk,
             result
-        }
+        
     }
-}
+}*/

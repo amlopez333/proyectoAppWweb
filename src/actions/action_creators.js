@@ -5,53 +5,51 @@ export var setState = function(state) {
     };
 };
 
-export var search = function(filter) {
-    return {
-        type: 'SEARCH',
-        filter
-    };
-};
 
-export var cancelSearch = function() {
-    return {
-        type: 'CANCEL_SEARCH'
+export const logout = function(){
+    return{
+        type: 'LOG_OUT'
     }
-};
-
-export var updateRevisionDate = function(itemId, date) {
+}
+export const login = function(userId){
+    return{
+        type: 'LOG_IN',
+        userId
+    }
+}
+export const register = function(){
     return {
-        type: 'UPDATE_REVISION_DATE',
-        itemId,
-        date
-    };
-};
-
-export var addItem = function(placa, codigo, marca, modelo, ubicacion, responsable, idResponsable, categoria, idCategoria, descripcion) {
+        type: 'REGISTER'
+    }
+}
+export const sell = function(){
     return {
-        type: 'ADD_ITEM',
-        placa,
-        codigo,
-        marca,
-        modelo,
-        ubicacion,
-        responsable,
-        idResponsable,
-        categoria,
-        idCategoria,
-        descripcion
-    };
-};
+        type: 'SELL'
+    }
+}
+export const buy = function(){
+    return {
+        type: 'BUY'
+    }
+}
+
+export const getPortfolio = function(currentCashBalance, items){
+    return{
+        type: 'GET_PORTFOLIO',
+        currentCashBalance,
+        items
+    }
+}
 
 import api from '../api'
 
-export function fetchStock(fun, stk){
+export function fetchStock(fun, stock){
     return dispatch => {
         //console.log('fetch')
         dispatch(fetchingFromApi());
-        return api.fetchStocks(fun, stk)
+        return api.fetchStocks(fun, stock)
         .then(response => {
-            //console.log('succ')
-            dispatch(fetchingSuccess(stk, response))
+            dispatch(fetchingSuccess(stock, response))
         })
         .catch((errors) => {
             console.log(errors)
@@ -74,16 +72,17 @@ export function fetchingFail(bool=false){
     }
 }
 
-export function fetchingSuccess(stk,result){
-    //console.log('fetchSuccess')
+export function fetchingSuccess(stock, result){
+    console.log('fetchSuccess')
     return{
         type: 'SEARCH_SUCCESS',
-        payload: {
-            stk,
-            result
-        }
+        stock,
+        result
+        
     }
 }
+
+
 
 export var headerChange = function(title, desc, iconNm) {
     return {
