@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 import { getTodayWithFormat, getToday } from '../utils/date.js';
 import axios from 'axios'; // hacer requests http
-
+import { browserHistory } from 'react-router'
 //utility functions
 var getItemIndex = function (state, itemId) {
     return state.get('items').findIndex(function (item) {
@@ -43,40 +43,33 @@ var updateRevisionDate = function (state, itemId, date) {
         return items.set(itemIndex, updatedItem);
     });
 }
+const updateSearchSuccess = function(state, stock, result, isFetching){
+    console.log(stock)
+    return state.merge(state, {stock: stock, result: result, isFetching: isFetching})
+}
+const updateSearchIsFetching = function(state, isFetching){
+    console.log(state.get('isFetching'))
+    return state.merge(state, {isFetching: isFetching})
+}
 
-var addItem = function (state, placa, codigo, marca, modelo, ubicacion, responsable, idResponsable, categoria, idCategoria, descripcion) {
-    if (!placa && !marca) {
-        console.log('no marca o placa');
-        return state;
-    };
-    // let addsuccess = false;
-
-    // state contains all the items:
-    // console.log( state + " on reducer before" )
-
-    const itemId = getNextItemId(state);
-    const ultimaRevision = getTodayWithFormat();
-    console.log(ultimaRevision);
-    const newItem = Map({ 
-        id: itemId,
-        placa: placa, 
-        marca: marca, 
-        modelo: modelo, 
-        categoria: categoria, 
-        ubicacion: ubicacion,
-        codigo: codigo,
-        responsable: responsable, 
-        ultimarevision: ultimaRevision, 
-        descripcion: descripcion });
-    console.log(newItem.toJS());
-    return state.update('items', function (items) {
-        return items.concat([newItem]);
-    });
-    // return state;
-    //ajax call
-
-};
-
+const logout = function(state){
+    return state.merge(state, {userId: ''})
+}
+const login = function(state, userId){
+    browserHistory.push('/portfolio');
+    return state.merge(state, {userId: userId})
+}
+const register = function(state){
+    browserHistory.push('/');
+    return state;
+}
+const getPortfolio = function(state, currentCashBalance, items){
+    //browserHistory.push('/portfolio');
+    return state.merge(state, {currentCashBalance: currentCashBalance, items: items})
+}
+const sell = function(state){
+    return state.merge(state, {currentCashBalance: ''})
+}
 var headerChange = function (state, title, desc, iconNm) {
     return state.set('title', title).set('description', desc).set('iconName', iconNm);
 };
@@ -86,14 +79,25 @@ var reducer = function (state = Map(), action) {
         case 'SET_STATE':
             return setState(state, action.state);
         case "SEARCH_SUCCESS":
-            //console.log('SUCC')
-            return{
-                state,
-                stock: action.payload.stk,
-                result: action.payload.result !== undefined ? action.payload.result:null,
+            console.log(action);
+
+            /*{state,
+                stock: action.stock,
+                result: action.result !== undefined ? action.result:null,
                 isFetching: false,
-                fetchError: false
-            }
+                fetchError: false}*/
+            return updateSearchSuccess(state, action.stock, action.result, false);
+                
+        case "LOG_OUT":
+            return logout(state);
+        case "LOG_IN":
+            return login(state, action.userId);
+        case "REGISTER":
+                return register(state)
+        case "GET_PORTFOLIO":
+            return getPortfolio(state, action.currentCashBalance, action.items);
+        case "SELL":
+            return sell(state);        
         case "SEARCH_FAILED":
             //console.log('FAIL')
             return{
@@ -104,10 +108,11 @@ var reducer = function (state = Map(), action) {
             }
         case "SEARCH_IS_FETCHING":
             //console.log('FETCH')
-            return{
+            return updateSearchIsFetching(state, true)
+            /*{
                 state,
                 isFetching: true
-            }
+            }*/
         default: return state;
 
     };

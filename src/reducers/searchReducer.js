@@ -1,5 +1,5 @@
 
-const initialState = {
+/*const initialState = {
     stock: '',
     isFetching: false,
     fetchError: false,
@@ -34,4 +34,4 @@ export default function reducer (state = initialState, action){
             }
         default: return state;
     }
-}
+}*/
