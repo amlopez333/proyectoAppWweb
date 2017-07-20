@@ -12,7 +12,8 @@ const Login = React.createClass( {
 		const { formState, currentlySending } = this.props.data || '';
         return (
             <div>
-                <h2 >Login</h2>
+                <h2 className="FormTitle">Inicio de Sesión</h2>
+                <br />
                     
                     {/* While the form is sending, show the loading indicator,
                         otherwise show "Log in" on the submit button */}

@@ -77,8 +77,7 @@
    padding: 15px;
 }
 
-.MenuOption{
-   padding: 10px;
+.MenuOption{   
    font-size: 11pt;
    margin-top: 5px;
    font-family: Arial, Helvetica, sans-serif;
@@ -86,9 +85,7 @@
 
 .MenuOption:hover{
    color: white;
-   padding: 10px;
    background-color: #59323c;
-   font-weight: bold;
    font-size: 11pt;
    font-family: Arial, Helvetica, sans-serif;
 }
@@ -102,6 +99,32 @@
 .SearchForm{
    text-align: center;
 }
+
+ .LoginRegisterButton:hover{
+    padding:5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    border-style: bold;
+    height: 30pt;
+    font-weight: bold;
+    color: white;
+    background-color: #260126;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+  .LoginRegisterButton:focus{
+    padding:5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    border-style: bold;
+    height: 30pt;
+    font-weight: bold;
+    color: white;
+    background-color: #260126;
+    font-family: Arial, Helvetica, sans-serif;
+ }
 
  .Label{
     font-weight: bold;
@@ -187,6 +210,60 @@
  }
 
 /**/
+
+@media (max-width: 1280px) {
+  .FormTitle{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: 10%;;
+  }
+
+  .LoginRegisterForm{
+    margin: 0 auto;
+    align-content: center;
+  }
+
+   .LoginRegisterButton{
+    padding:5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    border-style: normal;
+    height: 30pt;
+    font-weight: bold;
+    color: white;
+    background-color: #59323c;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+}
+
+@media (min-width: 1280px) {
+  .FormTitle{
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .LoginRegisterForm{
+    margin-left: 50%;
+  }
+
+   .LoginRegisterButton{
+    margin-left: 50%;
+    padding:5px;
+    padding-right: 30px;
+    border-radius: 10px;
+    border-style: normal;
+    height: 30pt;
+    font-weight: bold;
+    color: white;
+    background-color: #59323c;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+}
 
 
 @keyframes App-logo-spin {

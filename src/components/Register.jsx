@@ -32,31 +32,31 @@ const RegisterForm = React.createClass( {
         <Form horizontal>   
           <Col md={6}>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl type="text" value={this.props.state} 
+                <FormControl className="LoginRegisterForm" type="text" value={this.props.state} 
                 placeholder="Nombre" onChange={this.onChangeName} 
                 autoCorrect="off" autoCapitalize="off" spellCheck="false" ref = 'name'/>
             </FormGroup>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl type="text" value={this.props.state} 
+                <FormControl className="LoginRegisterForm" type="text" value={this.props.state} 
                 placeholder="Apellido" onChange={this.onChangeLastName} 
                 autoCorrect="off" autoCapitalize="off" spellCheck="false" ref = 'lastName'/>
             </FormGroup>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl type="text" value={this.props.state} 
+                <FormControl className="LoginRegisterForm" type="text" value={this.props.state} 
                 placeholder="Cédula" onChange={this.onChangeSSN} 
                 autoCorrect="off" autoCapitalize="off" spellCheck="false" ref = 'ssn'/>
             </FormGroup>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl type="text" value={this.props.state} 
+                <FormControl className="LoginRegisterForm" type="text" value={this.props.state} 
                 placeholder="Correo electrónico" onChange={this.onChangeEmail} 
                 autoCorrect="off" autoCapitalize="off" spellCheck="false" ref = 'email'/>
             </FormGroup>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl type="password" value={this.props.state} 
+                <FormControl className="LoginRegisterForm" type="password" value={this.props.state} 
                 placeholder="Constraseña"  onChange={this.onChangePassword} ref = 'password'/>
             </FormGroup>
             <FormGroup>
-              <Button bsStyle='primary' block onClick={this.register}>
+              <Button className="LoginRegisterButton" bsStyle='primary' block onClick={this.register}>
                   Registrarme
               </Button>
             </FormGroup>

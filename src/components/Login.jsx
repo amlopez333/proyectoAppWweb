@@ -22,16 +22,16 @@ const LoginForm = React.createClass( {
         <Form horizontal>  
           <Col md={6}>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl type="email" value={this.state.email} 
+                <FormControl className="LoginRegisterForm" type="email" value={this.state.email} 
                 placeholder="someemail@example.com" onChange={this.onChangeUsername} 
                 autoCorrect="off" autoCapitalize="off" spellCheck="false" ref = 'email'/>
             </FormGroup>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl  type="password" value={this.state.password} placeholder="••••••••••"  
+                <FormControl className="LoginRegisterForm"  type="password" value={this.state.password} placeholder="••••••••••"  
                 onChange={this.onChangePassword} ref = 'password'/>
             </FormGroup>
-            <FormGroup>
-              <Button bsStyle='primary' block onClick={this.login}>
+            <FormGroup className="LoginRegisterForm">
+              <Button  className="LoginRegisterButton" bsStyle='primary' block onClick={this.login}>
                   Iniciar Sesión
               </Button>
             </FormGroup>

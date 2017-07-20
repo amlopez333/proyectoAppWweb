@@ -47,34 +47,34 @@ const NavBar = React.createClass({
     render: function () {
         const loggedNav =  (
             <div className = 'nav navbar-nav side-nav'>
-                <li className="active">< Link to='portafolio' onClick={this.portfolioHeader} >
+                <li className="MenuOption">< Link to='portafolio' onClick={this.portfolioHeader} >
                     <i className="glyphicon glyphicon-book"></i>&nbsp; 
                     Portafolio</Link>
                 </li>
 
-                <li ><Link to='search' onClick={this.searchHeader}>
-                    <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                <li className="MenuOption"><Link to='search' onClick={this.searchHeader}>
+                    <i className="glyphicon glyphicon-shopping-cart"></i>&nbsp;
                     Compra</Link>
                 </li>
 
-                <li ><Link to='faq' onClick={this.faqHeader}>
-                    <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                <li className="MenuOption"><Link to='faq' onClick={this.faqHeader}>
+                    <i className="glyphicon glyphicon-question-sign"></i>&nbsp;
                     Preguntas Frecuentes</Link>
                 </li>
-                <li ><Link to='/' onClick={this.logoutHeader}>
-                    <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                <li className="MenuOption"><Link to='/' onClick={this.logoutHeader}>
+                    <i className="glyphicon glyphicon-log-out"></i>&nbsp;
                     Cerrar Sesión</Link>
                 </li>
             </div >
         );
         const notLoggedNav =  (
             <div className = 'nav navbar-nav side-nav'>
-                <li className="active">< Link to='/' onClick={this.loginHeader} >
-                    <i className="glyphicon glyphicon-book"></i>&nbsp; 
+                <li className="MenuOption active">< Link to='/' onClick={this.loginHeader} >
+                    <i className="glyphicon glyphicon-log-in"></i>&nbsp; 
                     Iniciar Sesión</Link>
                 </li>
 
-                <li ><Link to='register' onClick={this.registerHeader}>
+                <li className="MenuOption"><Link to='register' onClick={this.registerHeader}>
                     <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
                     Registrarme</Link>
                 </li>

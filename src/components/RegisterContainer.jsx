@@ -11,8 +11,8 @@ const Register = React.createClass( {
 		
         return (
             <div>
-                <h2>Registro</h2>
-                    
+                <h2 className="FormTitle">Registro</h2>
+                    <br />
                     {/* While the form is sending, show the loading indicator,
                         otherwise show "Log in" on the submit button */}
                 <RegisterForm location={location} history={this.props.history} 
