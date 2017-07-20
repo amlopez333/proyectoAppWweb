@@ -24,19 +24,19 @@ export class SearchBar extends Component{
     //no loading message while fetching?
     if(this.props.isFetching === true){
       return(  
-          <div style={{marginLeft:'15%'}}>        
+          <div className="SearchForm">        
           <br />
           <form onSubmit={this.stockSearch.bind(this)}>
-            <label>Búsqueda</label>
+            <label className="Label">Búsqueda</label>
             <br />
-            <input placeholder="Stock" type="text" ref="search"/> 
-            <select placeholder="function" ref="fn" >
+            <input className="Input" placeholder="Stock" type="text" ref="search"/> 
+            <select className="Input" placeholder="function" ref="fn" >
               <option value="TIME_SERIES_INTRADAY">Current</option>
               <option value="TIME_SERIES_DAILY">Daily</option>
               <option value="TIME_SERIES_WEEKLY">Weekly</option>
               <option value="TIME_SERIES_MONTHLY">Monthly</option>
             </select>
-            <button type="submit">Buscar</button>
+            <button className="Button" type="submit">Buscar</button>
           </form>            
           <br />
           <img src='./loading.jpg' alt="" className="App-logo" style={{marginLeft:'15%'}}/>
@@ -46,19 +46,19 @@ export class SearchBar extends Component{
       //initial load or fetch failed
       if(!this.props.result || this.props.result === null){      
         return (
-          <div style={{marginLeft:'15%'}}>        
+          <div className="SearchForm">        
           <br />
           <form onSubmit={this.stockSearch.bind(this)}>
-            <label>Búsqueda</label>
+            <label className="Label">Búsqueda</label>
             <br />
-            <input placeholder="Stock" type="text" ref="search"/> 
-            <select placeholder="function" ref="fn" >
+            <input className="Input" placeholder="Stock" type="text" ref="search"/> 
+            <select className="Input" placeholder="function" ref="fn" >
               <option value="TIME_SERIES_INTRADAY">Current</option>
               <option value="TIME_SERIES_DAILY">Daily</option>
               <option value="TIME_SERIES_WEEKLY">Weekly</option>
               <option value="TIME_SERIES_MONTHLY">Monthly</option>
             </select>
-            <button type="submit">Buscar</button>
+            <button className="Button" type="submit">Buscar</button>
           </form>            
           <br />
           </div>  
@@ -66,23 +66,22 @@ export class SearchBar extends Component{
       }else{
         //fetch successful
         return (
-          <div style={{marginLeft:'15%'}}>        
+          <div className="SearchForm">        
           <br />
           <form onSubmit={this.stockSearch.bind(this)}>
-            <label>Búsqueda</label>
+            <label className="Label">Búsqueda</label>
             <br />
-            <input placeholder="Stock" type="text" ref="search"/> 
-            <select placeholder="function" ref="fn">
+            <input className="Input" placeholder="Stock" type="text" ref="search"/> 
+            <select className="Input" placeholder="function" ref="fn">
               <option value="TIME_SERIES_INTRADAY">Current</option>
               <option value="TIME_SERIES_DAILY">Daily</option>
               <option value="TIME_SERIES_WEEKLY">Weekly</option>
               <option value="TIME_SERIES_MONTHLY">Monthly</option>
             </select>
-            <button type="submit">Buscar</button>
+            <button className="Button" type="submit">Buscar</button>
           </form>            
           <br />
           <Graphic stock = {this.props.stock} result = {this.props.result}/>
-          <div id="chart"></div>
         </div>  
         )
       }    

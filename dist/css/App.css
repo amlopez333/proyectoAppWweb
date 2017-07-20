@@ -23,6 +23,172 @@
   font-size: large;
 }
 
+
+/*Custom*/
+
+
+.brandtitle{
+   color: white;
+   font-weight: bold;
+   margin:10px;
+   margin-right: 40px;
+   float: left;
+}
+
+.MainTitle{
+   color: #e7dfdd;
+   font-weight: normal;
+   margin: 15px;
+   font-family: Impact, Charcoal, sans-serif;
+   font-size: 40pt;
+   float: left;
+}
+
+.SubTitle {
+   color: #d98310;
+   float: right;
+   margin: 10px;
+   margin-top: 50px;
+   text-decoration: underline;
+   font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.NavBar{
+  position: fixed;
+  top: 0px;
+   background-color: #260126;
+   margin-bottom: 20px;
+   top:0;
+}
+
+.Toggle{
+   background-color: #59323c;  
+}
+
+.Toggle:hover{
+   background-color: #59323c;
+}
+
+.Toggle:selected:focus{
+   background-color: #59323c;
+}
+
+.Active{
+   padding: 15px;
+}
+
+.MenuOption{
+   padding: 10px;
+   font-size: 11pt;
+   margin-top: 5px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.MenuOption:hover{
+   color: white;
+   padding: 10px;
+   background-color: #59323c;
+   font-weight: bold;
+   font-size: 11pt;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.Header{
+   padding:20px;
+   margin-top:60px;
+   background-color: white
+}
+
+.SearchForm{
+   text-align: center;
+}
+
+ .Label{
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ .Input{
+    padding:5px;
+    margin:8px;
+    height: 25pt;
+    border-radius: 5px;
+    border-style: thin;
+ }
+
+ .Button{
+    padding:5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 15px;
+    border-style: normal;
+    margin:8px;
+    height: 30pt;
+    font-weight: bold;
+    color: white;
+    background-color: #59323c;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .Button:hover{
+    padding:5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 15px;
+    border-style: normal;
+    margin:5px;
+    height: 30pt;
+    font-weight: bold;
+    color: white;
+    background-color: #260126;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .Loading{
+   margin: 15%;
+ }
+
+.ListButton{
+    text-align: center;
+    border-radius: 15px;
+    border-style: normal;
+    margin:8px;
+    height: 30pt;
+    width: 100px;
+    font-weight: bold;
+    color: black;
+    background-color: #bfaf80;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .ListButton:hover{
+    text-align: center;
+    border-style: normal;
+    margin:8px;
+    height: 30pt;
+    font-weight: bold;
+    color: white;
+    background-color: #8c6954;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ th{
+   background-color: #59323c;
+   color: white;
+   height: 50px;
+   font-family: Arial, Helvetica, sans-serif;
+   text-align: center;
+ }
+
+ td{
+   text-align: center;
+ }
+
+/**/
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

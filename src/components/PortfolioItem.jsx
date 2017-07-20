@@ -50,7 +50,7 @@ const PortfolioItem = React.createClass({
                 <td> {/*Acciones*/}
                     <div className="table-Button">
                         <ButtonGroup bsSize="small" > 
-                            <Button onClick={this.sellItem}>Vender</Button>
+                            <Button className="ListButton" onClick={this.sellItem}>Vender</Button>
                         </ButtonGroup>
                     </div>
                 </td>

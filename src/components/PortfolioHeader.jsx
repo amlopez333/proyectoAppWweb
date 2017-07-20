@@ -12,7 +12,7 @@ const PortfolioHeader = React.createClass({
                     {this.getHeaders().map(function(header, i){
                         //console.log(header, i)
                         return(
-                            <th key = {i}>{header}</th>
+                            <th className="TableHeader" key = {i}>{header}</th>
                         );
                     }.bind(this))}
                 </tr>

@@ -81,7 +81,7 @@ const NavBar = React.createClass({
             </div>
         );
         return (
-            <Navbar inverse collapseOnSelect  className="navbar-fixed-top" role="navigation">
+            <Navbar inverse collapseOnSelect  className="navbar-fixed-top NavBar" role="navigation">
 
                 <Navbar.Header>
                     
@@ -107,7 +107,7 @@ const NavBar = React.createClass({
                             Portafolio</Link>
                         </li>
 
-                        <li ><Link to='search' onClick={this.searchHeader}>
+                        <li className="MenuOption"><Link to='search' onClick={this.searchHeader}>
                             <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
                             Compra</Link>
                         </li>

@@ -10,7 +10,7 @@ const Header = React.createClass({
 
     render: function () {
         return (
-            <div className = "" >
+            <div className = "Header" >
                 <div className = "col-lg-12">
                     <h1 className ="page-header">
                         {this.props.title} <small>{this.props.description}</small>
