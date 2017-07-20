@@ -4,7 +4,7 @@ import PortfolioContainer from './PortfolioTable';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/action_creators';
 //import AlertContainer from 'react-alert';
-
+import axios from 'axios';
 const Home = React.createClass({
     getInitialState: function () {
         this.alertOptions = {
@@ -16,7 +16,19 @@ const Home = React.createClass({
         };
         return null;
     },
+    getPortfolio: function(){
+        if(this.props.userId && !this.props.currentCashBalance){
+            axios.get('http://127.0.0.1:3000/portfolios/' + this.props.userId).then(function(response){
+                let currentCashBalance = response.data.data.currentCashBalance;
+                let items = response.data.data.portfolio
+                return this.props.getPortfolio(currentCashBalance, items)
+            }.bind(this)).catch(function(error){
+                return console.log(error);
+            })
+        }
+    },
     render: function () {
+        this.getPortfolio();
         return (
             <section className='portfolio'>
                 {/*<AlertContainer ref={(b) => global.msg = b} {...this.alertOptions} />*/}
@@ -32,11 +44,13 @@ const Home = React.createClass({
 export default Home;
 
 var mapStateToProps = function (state) {
-    if (state.get('dbError')) {
+    if (state.dbError) {
         /*msg.error('No se ha podido conectar con la base de datos', {
         })*/;
     }
+    //console.log('aqui')
     return {
+        userId: state.get('userId'),
         currentCashBalance: state.get('currentCashBalance'),
         items: state.get('items'),
         headers: state.get('headers'),

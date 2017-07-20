@@ -11,7 +11,9 @@ import reducer from './reducers/reducer';
 import App from './components/App';
 import { NavBarContainer } from './components/NavBar';
 import { HomeContainer } from './components/Home';
-import { SearchBarContainer} from './components/SearchBar';
+import { SearchBarContainer} from './components/Search';
+import { LoginContainer} from './components/LoginContainer';
+import { RegisterContainer} from './components/RegisterContainer';
 
 import axios from 'axios'; // hacer requests http
 
@@ -37,7 +39,7 @@ const getCategorias = function () {
     return axios.get('/api/categorias');
 };
 //conccurent requests
-axios.all([getPortafolio()]).then(axios.spread(function (portafolio) {
+/*axios.all([getPortafolio()]).then(axios.spread(function (portafolio) {
     store.dispatch({
         type: 'SET_STATE',
         state: {
@@ -54,15 +56,18 @@ axios.all([getPortafolio()]).then(axios.spread(function (portafolio) {
         }
     });
     console.error(error.message);
-});
+});*/
 
 store.dispatch({
     type: 'SET_STATE',
     state: {
-
+        userId: '',
         headers:['Ticker', 'Nombre', 'Precio ($)', 'Cantidad', 'Fecha', 'Precio Actual ($)', 'Rendimiento (%)', 'Valor Actual', ''],
         title: 'Portafolio',
         iconName: 'glyphicon glyphicon-book',
+        stock: '',
+        result: '',
+        isFetching: false
         
     }
 });
@@ -70,7 +75,8 @@ store.dispatch({
         {/*<Route path='/faq' component={InventoryFormContainer} />*/}
 const routes =
     <Route path='/' component={App} >
-        <IndexRoute component={HomeContainer} />
+        <IndexRoute component={LoginContainer} />
+        <Route path='/register' component={RegisterContainer} />
         <Route path='/portfolio' component={HomeContainer} />
         <Route path='/search' component={SearchBarContainer} />
     </Route>

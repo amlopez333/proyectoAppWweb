@@ -1,21 +1,26 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {fetchStock} from '../actions/searchActions'
+
 import Graphic from './Graphic';
 //import loading from '../loading.jpg'
 
-class SearchBar extends Component{
+export class SearchBar extends Component{
+  constructor(props) {
+    super(props);
+    //this.state = {count: props.initialCount};
+  }
   stockSearch(event){
     event.preventDefault();
     //console.log('SEARCH')
     
     if(this.refs.fn.value.toString() === "TIME_SERIES_INTRADAY"){
-      console.log(this.refs.fn.value);
+      //console.log(this.refs.fn.value);
       return this.props.fetchStocks(this.refs.fn.value, this.refs.search.value)
     }
     return this.props.fetchStocks(this.refs.fn.value, this.refs.search.value)
   }  
   render(){
+    console.log(this.props.result)
     //no loading message while fetching?
     if(this.props.isFetching === true){
       return(  
@@ -34,7 +39,7 @@ class SearchBar extends Component{
             <button type="submit">Buscar</button>
           </form>            
           <br />
-          <img src='../loading.jpg' alt="" className="App-logo" style={{marginLeft:'15%'}}/>
+          <img src='./loading.jpg' alt="" className="App-logo" style={{marginLeft:'15%'}}/>
           </div> 
       )
     }else{
@@ -85,26 +90,5 @@ class SearchBar extends Component{
   }
 }
 
-const mapStateToProps = function(state){
-  return{
-    searchCriteria: state.searchCriteria,
-    stock: state.stock,
-    // func: state.search.func,
-    result: state.result,
-    isFetching: state.isFetching,
-    fetchError: state.fetchError
-  }
-}
 
-const mapDispatchToProps = function(dispatch){
-  return{
-    fetchStocks: function(fun, stk){
-        dispatch(fetchStock(fun, stk))
-    }
-  }
-}
-//export default SearchBar;
-export const SearchBarContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchBar);
+export default SearchBar;

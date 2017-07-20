@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {fetchingFromApi} from '../actions/searchActions'
+import {fetchingFromApi} from '../actions/action_creators'
 import LineChart from 'react-linechart'
 
 
-class Graphic extends Component{  
+class Graphic extends Component{
+    constructor(props) {
+    super(props);
+    //this.state = {count: props.initialCount};
+  }  
     render(){                           
         //console.log(temp)
         //console.log(this.props.result.splice(0,20))
         let data = [
                 
         ]
+        console.log(this.props.result);
         if(this.props.result){
             var temp = Object.values(this.props.result);
+            
             var arr = [];
             for (var e in temp){
                 arr.push(parseFloat(temp[e]['4. close']));

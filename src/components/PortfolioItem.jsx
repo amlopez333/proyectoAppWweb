@@ -12,7 +12,7 @@ const PortfolioItem = React.createClass({
     sellItem: function (evt) {
         //console.log('atun');
         //console.log(this.props.item);
-        return this.props.openSellModal(this.props.item);
+        return this.props.openSellModal(this.props.item, this.state.currentPrice);
     },
     getCurrentPrice: function(){
         let encodedURI = window.encodeURI('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+this.props.item.get('ticker')+'&interval=1min&apikey=K7S08RRI532JTVS3');
@@ -29,7 +29,7 @@ const PortfolioItem = React.createClass({
             console.log(error);
         })
     },
-    componentDidMount: function(){
+    componentWillMount: function(){
         this.getCurrentPrice();
         return setInterval(this.getCurrentPrice, 60000)
     },

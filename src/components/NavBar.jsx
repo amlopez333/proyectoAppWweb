@@ -28,16 +28,63 @@ const NavBar = React.createClass({
         //this.props.actions.headerChange('Búsqueda', 'Comprar Acciones', 'glyphicon glyphicon-plus-sign');
         browserHistory.push('/faq');
     },
+    loginHeader: function(evt){
+        evt.preventDefault();
+        //this.props.actions.headerChange('Búsqueda', 'Comprar Acciones', 'glyphicon glyphicon-plus-sign');
+        browserHistory.push('/');
+    },
+    registerHeader: function(evt){
+        evt.preventDefault();
+        //this.props.actions.headerChange('Búsqueda', 'Comprar Acciones', 'glyphicon glyphicon-plus-sign');
+        browserHistory.push('/register');
+    },
+    logoutHeader: function(evt){
+        evt.preventDefault();
+        browserHistory.push('/')
+        return this.props.actions.logout();
+    },
     /** ------------------------------------------------ */
     render: function () {
+        const loggedNav =  (
+            <div className = 'nav navbar-nav side-nav'>
+                <li className="active">< Link to='portafolio' onClick={this.portfolioHeader} >
+                    <i className="glyphicon glyphicon-book"></i>&nbsp; 
+                    Portafolio</Link>
+                </li>
+
+                <li ><Link to='search' onClick={this.searchHeader}>
+                    <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                    Compra</Link>
+                </li>
+
+                <li ><Link to='faq' onClick={this.faqHeader}>
+                    <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                    Preguntas Frecuentes</Link>
+                </li>
+                <li ><Link to='/' onClick={this.logoutHeader}>
+                    <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                    Cerrar Sesión</Link>
+                </li>
+            </div >
+        );
+        const notLoggedNav =  (
+            <div className = 'nav navbar-nav side-nav'>
+                <li className="active">< Link to='/' onClick={this.loginHeader} >
+                    <i className="glyphicon glyphicon-book"></i>&nbsp; 
+                    Iniciar Sesión</Link>
+                </li>
+
+                <li ><Link to='register' onClick={this.registerHeader}>
+                    <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                    Registrarme</Link>
+                </li>
+            </div>
+        );
         return (
             <Navbar inverse collapseOnSelect  className="navbar-fixed-top" role="navigation">
 
                 <Navbar.Header>
-                    <div className="brandtitle">
-                        {/*<Link > </Link>*/}
-                        <nobr><h1 className="scaps nobr">Daquant</h1></nobr><nobr> - Trader </nobr>
-                    </div>
+                    
                     <Navbar.Toggle className="navbar-toggle navbar-brand" data-toggle="collapse" data-target="navbar-ex1-collapse" />
                 </Navbar.Header>
                 {/*<!-- Top bar Menu Items -->*/}
@@ -54,8 +101,8 @@ const NavBar = React.createClass({
                 <Navbar.Collapse className='collapse navbar-ex1-collapse'>
 
                     <ul className='nav navbar-nav side-nav'>
-
-                        <li className="active">< Link to='portafolio' onClick={this.portfolioHeader} >
+                        {this.props.userId ? loggedNav : notLoggedNav}
+                        {/*<li className="active">< Link to='{portafolio}' onClick={this.portfolioHeader} >
                             <i className="glyphicon glyphicon-book"></i>&nbsp; 
                             Portafolio</Link>
                         </li>
@@ -65,11 +112,10 @@ const NavBar = React.createClass({
                             Compra</Link>
                         </li>
 
-                        <li >
-                            <a className='faq'>
-                            <i className="glyphicon glyphicon-info-sign"></i>&nbsp;
-                            Preguntas Frecuentes</a>
-                        </li>
+                        <li ><Link to='faq' onClick={this.searchHeader}>
+                            <i className="glyphicon glyphicon-plus-sign"></i>&nbsp;
+                            Compra</Link>
+                        </li>*/}
                     </ul>
 
                 </Navbar.Collapse>
@@ -79,10 +125,15 @@ const NavBar = React.createClass({
 });
 
 export default NavBar;
+const mapStateToProps = function (state) {
+    return {
+        userId: state.get('userId')
+    };
+};
 const mapDispatchToProps = function (dispatch) {
     return {
         actions: bindActionCreators(actions, dispatch)
     };
 };
 
-export const NavBarContainer = connect(null, mapDispatchToProps)(NavBar);
+export const NavBarContainer = connect(mapStateToProps, mapDispatchToProps)(NavBar);
