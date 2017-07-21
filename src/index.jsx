@@ -62,7 +62,7 @@ store.dispatch({
     type: 'SET_STATE',
     state: {
         userId: '',
-        headers:['Ticker', 'Nombre', 'Precio ($)', 'Cantidad', 'Fecha', 'Precio Actual ($)', 'Rendimiento (%)', 'Valor Actual', ''],
+        headers:['Ticker', 'Nombre', 'Precio ($)', 'Cantidad', 'Fecha', 'Precio Actual ($)', 'Rendimiento (%)', 'Valor Actual ($)', ''],
         title: 'Portafolio',
         iconName: 'glyphicon glyphicon-book',
         stock: '',

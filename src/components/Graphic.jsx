@@ -5,20 +5,18 @@ import LineChart from 'react-linechart'
 
 
 class Graphic extends Component{
-    constructor(props) {
-    super(props);
-    //this.state = {count: props.initialCount};
-  }  
+    
     render(){                           
         //console.log(temp)
         //console.log(this.props.result.splice(0,20))
         let data = [
                 
         ]
-        console.log(this.props.result);
+        
         if(this.props.result){
-            var temp = Object.values(this.props.result);
-            
+            console.log('chunga', this.props.result);
+            var temp = Object.values(this.props.result.toJS());
+            console.log(temp)
             var arr = [];
             for (var e in temp){
                 arr.push(parseFloat(temp[e]['4. close']));
@@ -55,11 +53,6 @@ class Graphic extends Component{
     }
 }
 
-function mapStateToProps(state){
-    return {
-        result: state.result,
-        stock: state.stock
-    }
-}
 
-export default connect(mapStateToProps, fetchingFromApi)(Graphic)
+
+export default Graphic

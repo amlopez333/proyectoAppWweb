@@ -51,6 +51,10 @@ const updateSearchIsFetching = function(state, isFetching){
     console.log(state.get('isFetching'))
     return state.merge(state, {isFetching: isFetching})
 }
+const updateSearchFailed= function(state, isFetching, fetchFail, result){
+    console.log(state.get('isFetching'))
+    return state.merge(state, {isFetching: isFetching, fetchFail: fetchFail, result: result})
+}
 
 const logout = function(state){
     return state.merge(state, {userId: ''})
@@ -99,13 +103,9 @@ var reducer = function (state = Map(), action) {
         case "SELL":
             return sell(state);        
         case "SEARCH_FAILED":
-            //console.log('FAIL')
-            return{
-                state,
-                isFetching: false,
-                fetchError: action.fetchFail,
-                result: null
-            }
+            console.log('FAIL')
+            return updateSearchFailed(state, false, action.fetchFail, undefined)
+               
         case "SEARCH_IS_FETCHING":
             //console.log('FETCH')
             return updateSearchIsFetching(state, true)

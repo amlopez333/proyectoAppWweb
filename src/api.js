@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-function fetchStocks(func="TIME_SERIES_DAILY", stock){
+export const fetchStocks = function(func="TIME_SERIES_DAILY", stock){
     let encodedURI;
     console.log(func === "TIME_SERIES_INTRADAY");
     if(func === "TIME_SERIES_INTRADAY"){
@@ -30,4 +30,4 @@ function fetchStocks(func="TIME_SERIES_DAILY", stock){
     })
 }
 
-export default {fetchStocks};
+//export default fetchStocks;

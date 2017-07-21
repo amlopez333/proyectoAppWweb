@@ -86,7 +86,7 @@ const PortfolioTable = React.createClass({
 
 export default PortfolioTable;
 const mapStateToProps = function (state) {
-    console.log('aqui')
+    //console.log('aqui')
     return {
         currentCashBalance: state.get('currentCashBalance'),
         

@@ -34,7 +34,7 @@ const PortfolioItem = React.createClass({
         return setInterval(this.getCurrentPrice, 60000)
     },
     render: function () {
-        console.log(this.props.item)
+        //console.log(this.props.item)
         return (
             <tr className="clickable-row">
                 {/*<td>  this.props.item.get('id')  </td>  el header id esta oculto  */}
@@ -46,7 +46,7 @@ const PortfolioItem = React.createClass({
                 <td>{this.state.currentPrice}</td>
                 <td className = {this.state.currentPrice - parseFloat(this.props.item.get('price')) >= 0.0 ? 'positive' : 'negative'}>
                     {round10(Math.abs((this.state.currentPrice - parseFloat(this.props.item.get('price')))) / this.props.item.get('price') * 100) }</td>
-                <td>{this.props.item.get('amount') * this.state.currentPrice}</td>
+                <td>{round10(this.props.item.get('amount') * this.state.currentPrice)}</td>
                 <td> {/*Acciones*/}
                     <div className="table-Button">
                         <ButtonGroup bsSize="small" > 

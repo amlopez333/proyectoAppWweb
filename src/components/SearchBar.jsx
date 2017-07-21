@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-
 import Graphic from './Graphic';
+import axios from 'axios'
 //import loading from '../loading.jpg'
 
 export class SearchBar extends Component{
@@ -9,17 +9,54 @@ export class SearchBar extends Component{
     super(props);
     //this.state = {count: props.initialCount};
   }
+
   stockSearch(event){
     event.preventDefault();
     //console.log('SEARCH')
-    
-    if(this.refs.fn.value.toString() === "TIME_SERIES_INTRADAY"){
-      //console.log(this.refs.fn.value);
-      return this.props.fetchStocks(this.refs.fn.value, this.refs.search.value)
+    const func = this.refs.fn.value;
+    const stock = this.refs.search.value;
+    let encodedURI;
+    if(!func || !stock){
+      return;
     }
-    return this.props.fetchStocks(this.refs.fn.value, this.refs.search.value)
+    //console.log(func === "TIME_SERIES_INTRADAY");
+    if(func === "TIME_SERIES_INTRADAY"){
+        console.log('chunga');
+        encodedURI = window.encodeURI('https://www.alphavantage.co/query?function='+func+'&symbol='+stock+'&interval=1min&apikey=K7S08RRI532JTVS3');
+    }
+    else{
+        encodedURI = window.encodeURI('https://www.alphavantage.co/query?function='+func+'&symbol='+stock+'&apikey=K7S08RRI532JTVS3');
+    } 
+    axios.get(encodedURI)
+    .then( function(response){
+        //console.log('fetch')
+        //console.log(response.data['Time Series (Daily)'])
+        let result;
+        switch(func){
+          case "TIME_SERIES_INTRADAY":
+              result = response.data['Time Series (1min)']
+              break
+          case "TIME_SERIES_DAILY":
+              result = response.data['Time Series (Daily)'];
+              break;
+          case "TIME_SERIES_WEEKLY":
+              result = response.data['Weekly Time Series'];
+              break;
+          case "TIME_SERIES_MONTHLY":
+              result = response.data['Monthly Time Series'];
+              break;
+          default:
+              result = response.data['Time Series (Daily)'];
+        }
+        return this.props.actions.fetchingSuccess(stock, result)
+    }.bind(this)).catch(function(error){
+      console.log(error)  
+      return this.props.actions.fetchingFail(true)
+    }.bind(this));
+    return this.props.actions.fetchingFromApi();
   }  
   render(){
+    console.log("props1")
     console.log(this.props.result)
     //no loading message while fetching?
     if(this.props.isFetching === true){
@@ -61,10 +98,12 @@ export class SearchBar extends Component{
             <button className="Button" type="submit">Buscar</button>
           </form>            
           <br />
+          
           </div>  
         )
       }else{
         //fetch successful
+        console.log( "Props2", this.props.result)
         return (
           <div className="SearchForm">        
           <br />

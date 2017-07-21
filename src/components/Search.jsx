@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { SearchBar } from './SearchBar';
-import {fetchStock} from '../actions/action_creators'
-
+import { fetchStocks } from '../api'
+import {fetchingFromApi, fetchingFail, fetchingSuccess} from '../actions/action_creators'
 
 const Search = React.createClass({
     render: function(){
@@ -28,11 +29,11 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch){
   return{
-    fetchStocks: function(fun, stk){
-        dispatch(fetchStock(fun, stk))
-    }
+    actions: bindActionCreators({fetchingFromApi, fetchingFail, fetchingSuccess}, dispatch),
+    //fetchStocks: fetchStocks
   }
 }
+
 export const SearchBarContainer = connect(
   mapStateToProps,
   mapDispatchToProps
