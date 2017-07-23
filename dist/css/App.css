@@ -56,23 +56,23 @@
 }
 
 .NavBar{
-  position: fixed;
-  top: 0px;
-   background-color: #260126;
+   position: fixed;
+   top: 0px;
+   background-color: #0b3c5d;
    margin-bottom: 20px;
    top:0;
 }
 
 .Toggle{
-   background-color: #59323c;  
+   background-color: #105482;  
 }
 
 .Toggle:hover{
-   background-color: #59323c;
+   background-color: #105482;
 }
 
 .Toggle:selected:focus{
-   background-color: #59323c;
+   background-color: #105482;
 }
 
 .Active{
@@ -80,16 +80,17 @@
 }
 
 .MenuOption{
-  padding-left: 20px;
-  padding-right: 20px;   
+   padding-left: 20px;
+   padding-right: 20px;   
    font-size: 11pt;
    margin-top: 5px;
+   color: white;
    font-family: Arial, Helvetica, sans-serif;
 }
 
 .MenuOption:hover{
    color: white;
-   background-color: #59323c;
+   background-color: #105482;
    font-size: 11pt;
    font-weight: bold;
    font-family: Arial, Helvetica, sans-serif;
@@ -114,7 +115,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #260126;
+    background-color: #105482;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -127,7 +128,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #260126;
+    background-color: #0b3c5d;
     font-family: Arial, Helvetica, sans-serif;
  }
   .LoginRegisterButton:focus{
@@ -139,7 +140,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #260126;
+    background-color: #0b3c5d;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -167,7 +168,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #59323c;
+    background-color: #1d7eb7;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -181,7 +182,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #260126;
+    background-color: #0b3c5d;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -197,30 +198,32 @@
     height: 30pt;
     width: 100px;
     font-weight: bold;
-    color: black;
-    background-color: #bfaf80;
+    color: white;
+    background-color: #d98310;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
  }
 
  .ListButton:hover{
     text-align: center;
+    border-radius: 15px;
     border-style: normal;
     margin:8px;
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #8c6954;
+    background-color: #e28e1d;
     font-family: Arial, Helvetica, sans-serif;
  }
 .ListButton:active{
-  color: white;
-    background-color: blue !important;
+    color: black;
+    border-radius: 15px;
+    background-color: silver !important;
 }
 
 
  th{
-   background-color: #59323c;
+   background-color: #105482;
    color: white;
    height: 50px;
    font-family: Arial, Helvetica, sans-serif;
@@ -287,12 +290,11 @@
  }
 
 .FAQ{
-  margin: 30px;
+  margin: 5%;
 }
 .Question{
   color: black;
-  text-decoration: underline;
-  font-family: "Arial Black", Gadget, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .Answer{
   text-align: justify;
@@ -368,7 +370,7 @@ dt + dt + dd + dt {
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #59323c;
+    background-color: #0b3c5d;
     font-family: Arial, Helvetica, sans-serif;
  }
 }
@@ -396,7 +398,7 @@ dt + dt + dd + dt {
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #59323c;
+    background-color: #0b3c5d;
     font-family: Arial, Helvetica, sans-serif;
  }
 }

@@ -75,11 +75,11 @@ const CustomModal = React.createClass({
           </Modal.Body>
           <Modal.Footer>
             <ButtonGroup bsSize="small" >
-                <Button style={{backgroundColor:"#59323c", color:"white", margin:"4px", paddingLeft:"30px", paddingRight:"30px", fontWeight:"bold"}} onClick={this.executeTransaction} 
+                <Button style={{backgroundColor:"#1d7eb7", color:"white", margin:"4px", paddingLeft:"30px", paddingRight:"30px", fontWeight:"bold"}} onClick={this.executeTransaction} 
                 disabled = {this.props.isValid(this.state.cantidad) ? false: true}>
                     {transaction}
                 </Button>
-                <Button style={{backgroundColor:"#59323c", color:"white", margin:"4px", paddingLeft:"30px", paddingRight:"30px", fontWeight:"bold"}} onClick={this.closeModal}>Cancelar</Button>
+                <Button style={{backgroundColor:"#1d7eb7", color:"white", margin:"4px", paddingLeft:"30px", paddingRight:"30px", fontWeight:"bold"}} onClick={this.closeModal}>Cancelar</Button>
             </ButtonGroup>
           </Modal.Footer>
         </Modal>

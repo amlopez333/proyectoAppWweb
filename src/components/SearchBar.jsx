@@ -123,10 +123,10 @@ export class SearchBar extends Component{
             <br />
             <input className="Input" placeholder="Stock" type="text" ref="search"/> 
             <select className="Input" placeholder="function" ref="fn" >
-              <option value="TIME_SERIES_INTRADAY">Current</option>
-              <option value="TIME_SERIES_DAILY">Daily</option>
-              <option value="TIME_SERIES_WEEKLY">Weekly</option>
-              <option value="TIME_SERIES_MONTHLY">Monthly</option>
+              <option value="TIME_SERIES_INTRADAY">Actual</option>
+              <option value="TIME_SERIES_DAILY">Diario</option>
+              <option value="TIME_SERIES_WEEKLY">Semanal</option>
+              <option value="TIME_SERIES_MONTHLY">Mensual</option>
             </select>
             <button className="Button" type="submit">Buscar</button>
           </form>            
@@ -145,10 +145,10 @@ export class SearchBar extends Component{
             <br />
             <input className="Input" placeholder="Stock" type="text" ref="search"/> 
             <select className="Input" placeholder="function" ref="fn" >
-              <option value="TIME_SERIES_INTRADAY">Current</option>
-              <option value="TIME_SERIES_DAILY">Daily</option>
-              <option value="TIME_SERIES_WEEKLY">Weekly</option>
-              <option value="TIME_SERIES_MONTHLY">Monthly</option>
+              <option value="TIME_SERIES_INTRADAY">Actual</option>
+              <option value="TIME_SERIES_DAILY">Diario</option>
+              <option value="TIME_SERIES_WEEKLY">Semanal</option>
+              <option value="TIME_SERIES_MONTHLY">Mensual</option>
             </select>
             <button className="Button" type="submit">Buscar</button>
           </form>            
@@ -167,10 +167,10 @@ export class SearchBar extends Component{
             <br />
             <input className="Input" placeholder="Stock" type="text" ref="search"/> 
             <select className="Input" placeholder="function" ref="fn">
-              <option value="TIME_SERIES_INTRADAY">Current</option>
-              <option value="TIME_SERIES_DAILY">Daily</option>
-              <option value="TIME_SERIES_WEEKLY">Weekly</option>
-              <option value="TIME_SERIES_MONTHLY">Monthly</option>
+              <option value="TIME_SERIES_INTRADAY">Actual</option>
+              <option value="TIME_SERIES_DAILY">Diario</option>
+              <option value="TIME_SERIES_WEEKLY">Semanal</option>
+              <option value="TIME_SERIES_MONTHLY">Mensual</option>
             </select>
             <button className="Button" type="submit">Buscar</button>
             <button className="Button" type="button" onClick={this.open}>Comprar</button>
