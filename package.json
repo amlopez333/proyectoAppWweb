@@ -5,7 +5,7 @@
   "main": "sever.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack -p --progress --colors src/index.jsx",
+    "build": "node_modules/.bin/webpack -p --progress --colors --config webpack.prod.config.js src/index.jsx",
     "devbuild": "node_modules/.bin/webpack --progress --colors src/index.jsx"
   },
   "repository": {
