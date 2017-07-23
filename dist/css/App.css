@@ -58,21 +58,21 @@
 .NavBar{
    position: fixed;
    top: 0px;
-   background-color: #0b3c5d;
+   background-color: #000000;
    margin-bottom: 20px;
    top:0;
 }
 
 .Toggle{
-   background-color: #105482;  
+   background-color: #002f06;  
 }
 
 .Toggle:hover{
-   background-color: #105482;
+   background-color: #002f06;
 }
 
 .Toggle:selected:focus{
-   background-color: #105482;
+   background-color: #002f06;
 }
 
 .Active{
@@ -90,7 +90,7 @@
 
 .MenuOption:hover{
    color: white;
-   background-color: #105482;
+   background-color: #1c6000;
    font-size: 11pt;
    font-weight: bold;
    font-family: Arial, Helvetica, sans-serif;
@@ -115,7 +115,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #105482;
+    background-color: #1c6000;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -128,7 +128,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #0b3c5d;
+    background-color: #002f06;
     font-family: Arial, Helvetica, sans-serif;
  }
   .LoginRegisterButton:focus{
@@ -140,7 +140,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #0b3c5d;
+    background-color: #002f06;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -168,7 +168,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #1d7eb7;
+    background-color: #1c6000;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -182,7 +182,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #0b3c5d;
+    background-color: #002f06;
     font-family: Arial, Helvetica, sans-serif;
  }
 
@@ -199,7 +199,7 @@
     width: 100px;
     font-weight: bold;
     color: white;
-    background-color: #d98310;
+    background-color: #1c6000;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
  }
@@ -212,7 +212,7 @@
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #e28e1d;
+    background-color: #27a102;
     font-family: Arial, Helvetica, sans-serif;
  }
 .ListButton:active{
@@ -223,7 +223,7 @@
 
 
  th{
-   background-color: #105482;
+   background-color: #002f06;
    color: white;
    height: 50px;
    font-family: Arial, Helvetica, sans-serif;
@@ -232,6 +232,7 @@
 
  td{
    text-align: center;
+   padding-top: 10px;
  }
 
  .positive{
@@ -370,7 +371,7 @@ dt + dt + dd + dt {
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #0b3c5d;
+    background-color: #002f06;
     font-family: Arial, Helvetica, sans-serif;
  }
 }
@@ -398,7 +399,7 @@ dt + dt + dd + dt {
     height: 30pt;
     font-weight: bold;
     color: white;
-    background-color: #0b3c5d;
+    background-color: #002f06;
     font-family: Arial, Helvetica, sans-serif;
  }
 }
