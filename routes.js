@@ -93,7 +93,7 @@ router.post('/buy/:userId', function(req, res, next){
         if(error){
             return res.status(420).json({message: 'Error buying ' + error.message});
         }
-        userSchema.findByIdAndUpdate(userId, [{portfolio: {ticker: ticker, name: name, priceBought: price, amount: amount}}], {new: true, upsert: true})
+        userSchema.findByIdAndUpdate(userId, [{portfolio: {_id: Schema.Types.ObjectId, ticker: ticker, name: name, priceBought: price, amount: amount}}], {new: true, upsert: true})
         connection.close();
         return res.status(203).json({message: 'Created'});
     });

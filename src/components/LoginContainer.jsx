@@ -8,8 +8,7 @@ import { login } from '../actions/action_creators';
 
 const Login = React.createClass( {
 	render: function() {
-		const dispatch = this.props.dispatch;
-		const { formState, currentlySending } = this.props.data || '';
+		
         return (
             <div>
                 <h2 className="FormTitle">Inicio de Sesión</h2>
@@ -17,8 +16,8 @@ const Login = React.createClass( {
                     
                     {/* While the form is sending, show the loading indicator,
                         otherwise show "Log in" on the submit button */}
-                <LoginForm data={formState} dispatch={dispatch} location={location} history={this.props.history} 
-                login={this.props.actions}  currentlySending={currentlySending}/>
+                <LoginForm  
+                login={this.props.actions}  />
             </div>
         );
     },
@@ -30,15 +29,11 @@ const Login = React.createClass( {
 
 export default Login;
 // Which props do we want to inject, given the global state?
-function mapStateToProps(state) {
-  return {
-    data: state.get('data')
-  };
-}
+
 const mapDispatchToProps = function(dispatch){
     return {
         actions: bindActionCreators(login, dispatch)
     }
 }
 // Wrap the component to inject dispatch and state into it
-export const LoginContainer =  connect(mapStateToProps, mapDispatchToProps)(Login);
+export const LoginContainer =  connect(null, mapDispatchToProps)(Login);

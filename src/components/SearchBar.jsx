@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import Graphic from './Graphic';
-import axios from 'axios'
+import CustomModal from './CustomModal';
+import axios from 'axios';
 //import loading from '../loading.jpg'
 
 export class SearchBar extends Component{
@@ -21,7 +22,7 @@ export class SearchBar extends Component{
     }
     //console.log(func === "TIME_SERIES_INTRADAY");
     if(func === "TIME_SERIES_INTRADAY"){
-        console.log('chunga');
+        //console.log('chunga');
         encodedURI = window.encodeURI('https://www.alphavantage.co/query?function='+func+'&symbol='+stock+'&interval=1min&apikey=K7S08RRI532JTVS3');
     }
     else{
@@ -50,14 +51,13 @@ export class SearchBar extends Component{
         }
         return this.props.actions.fetchingSuccess(stock, result)
     }.bind(this)).catch(function(error){
-      console.log(error)  
+       
       return this.props.actions.fetchingFail(true)
     }.bind(this));
     return this.props.actions.fetchingFromApi();
   }  
   render(){
-    console.log("props1")
-    console.log(this.props.result)
+   
     //no loading message while fetching?
     if(this.props.isFetching === true){
       return(  
@@ -103,7 +103,7 @@ export class SearchBar extends Component{
         )
       }else{
         //fetch successful
-        console.log( "Props2", this.props.result)
+        
         return (
           <div className="SearchForm">        
           <br />

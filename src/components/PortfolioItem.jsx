@@ -21,6 +21,7 @@ const PortfolioItem = React.createClass({
             
             let data = response.data['Time Series (1min)'];
             let currentData = Object.keys(data)[0];
+            //console.log(currentData);
             //console.log(Object.keys(data));
             //console.log(data[currentData]['4. close']);
             let currentPrice = round10(parseFloat(data[currentData]['4. close']));
