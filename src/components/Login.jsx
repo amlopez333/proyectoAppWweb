@@ -22,7 +22,7 @@ const LoginForm = React.createClass( {
         <Form horizontal>  
           <Col md={6}>
             <FormGroup controlId='formHorizontalEmail'>        
-                <FormControl className="LoginRegisterForm" type="email" value={this.state.email} 
+                <FormControl className="LoginRegisterForm" type="email" value={this.state.email}
                 placeholder="someemail@example.com" onChange={this.onChangeUsername} 
                 autoCorrect="off" autoCapitalize="off" spellCheck="false" ref = 'email'/>
             </FormGroup>

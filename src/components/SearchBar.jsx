@@ -76,7 +76,7 @@ export class SearchBar extends Component{
             <button className="Button" type="submit">Buscar</button>
           </form>            
           <br />
-          <img src='./loading.jpg' alt="" className="App-logo" style={{marginLeft:'15%'}}/>
+          <img src='./loading.jpg' alt="" className="App-logo"/>
           </div> 
       )
     }else{

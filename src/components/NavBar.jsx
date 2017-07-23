@@ -69,7 +69,7 @@ const NavBar = React.createClass({
         );
         const notLoggedNav =  (
             <div className = 'nav navbar-nav side-nav'>
-                <li className="MenuOption active">< Link to='/' onClick={this.loginHeader} >
+                <li className="MenuOption">< Link to='/' onClick={this.loginHeader} >
                     <i className="glyphicon glyphicon-log-in"></i>&nbsp; 
                     Iniciar Sesión</Link>
                 </li>
