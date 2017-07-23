@@ -12,7 +12,12 @@ const CustomModal = React.createClass({
     },
     executeTransaction: function(){
         //this.props.onClose();
-        return this.props.executeTransaction(this.state.cantidad);
+        if(this.props.transaction === 'Venta'){
+            return this.props.executeTransaction(this.state.cantidad);
+        }
+        let keys = Object.keys(this.props.item.toJS()).sort()
+        let price = round10(this.props.item.get(keys[keys.length -1]).get('4. close'));
+        return this.props.executeTransaction(this.state.cantidad, price)
     },
     onChangeCantidad: function(evt){
         return this.setState({cantidad: evt.target.value});
@@ -32,10 +37,16 @@ const CustomModal = React.createClass({
         let price = ''//this.props.item.get('price');
         const currentCashBalance = this.props.currentCashBalance;
         const transaction = this.props.transaction
-        if(this.props.item && this.props.currentPrice){
+        if(this.props.item && this.props.currentPrice && this.props.transaction === 'Venta'){
             ticker = this.props.item.get('ticker');
             price = this.props.currentPrice;
         }
+        if(this.props.item && this.props.transaction === 'Compra'){
+            ticker = this.props.ticker
+            let keys = Object.keys(this.props.item.toJS()).sort()
+            price = round10(this.props.item.get(keys[keys.length -1]).get('4. close'));
+        }
+        const comission = this.props.transaction === 'Venta' ? -6.75 : 6.75
     return (
       <div>
         <Modal animation show={this.props.showModal} onHide={this.closeModal}>
@@ -53,7 +64,7 @@ const CustomModal = React.createClass({
                     {/*<OverlayTrigger overlay={popover}>atun</OverlayTrigger>*/}
                 </dd>
                 <dt>Total</dt>
-                <dd className="TransactionValue">{this.state.cantidad > 0 ? round10(this.state.cantidad * price - 6.75) : 0}</dd>
+                <dd className="TransactionValue">{this.state.cantidad > 0 ? round10(this.state.cantidad * price + comission) : 0}</dd>
                 <dt>Efectivo actual</dt>
                 <dd className="TransactionValue">{currentCashBalance}</dd>
                 <dt>Efectivo restante</dt>
@@ -65,7 +76,7 @@ const CustomModal = React.createClass({
           <Modal.Footer>
             <ButtonGroup bsSize="small" >
                 <Button style={{backgroundColor:"#59323c", color:"white", margin:"4px", paddingLeft:"30px", paddingRight:"30px", fontWeight:"bold"}} onClick={this.executeTransaction} 
-                className = {this.props.isValid(this.state.cantidad) ? 'valid': 'invalid'}>
+                disabled = {this.props.isValid(this.state.cantidad) ? false: true}>
                     {transaction}
                 </Button>
                 <Button style={{backgroundColor:"#59323c", color:"white", margin:"4px", paddingLeft:"30px", paddingRight:"30px", fontWeight:"bold"}} onClick={this.closeModal}>Cancelar</Button>

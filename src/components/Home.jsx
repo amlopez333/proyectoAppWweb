@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
 import PortfolioContainer from './PortfolioTable';
+import LoadingIcon from './LoadingIcon'
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/action_creators';
 //import AlertContainer from 'react-alert';
@@ -25,6 +26,7 @@ const Home = React.createClass({
             }.bind(this)).catch(function(error){
                 return console.log(error);
             })
+            return this.props.load();
         }
     },
     render: function () {
@@ -33,7 +35,8 @@ const Home = React.createClass({
             <section className='portfolio'>
                 {/*<AlertContainer ref={(b) => global.msg = b} {...this.alertOptions} />*/}
                 <Grid>
-                    <PortfolioContainer {...this.props} />
+                    <h2 className="FormTitle">Portafolio</h2>
+                    {this.props.isLoading ? <LoadingIcon /> : <PortfolioContainer {...this.props} />}
                 </Grid>
             </section>
 
@@ -52,6 +55,7 @@ var mapStateToProps = function (state) {
     return {
         userId: state.get('userId'),
         currentCashBalance: state.get('currentCashBalance'),
+        isLoading: state.get('isLoading'),
         items: state.get('items'),
         headers: state.get('headers'),
         title: state.get('title')

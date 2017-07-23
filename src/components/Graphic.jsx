@@ -26,7 +26,7 @@ class Graphic extends Component{
             //console.log(temp)
             let temp2 = []
             Object.keys(this.props.result.toJS()).sort().forEach(function(value){
-                console.log(this.props.result.get(value).get('4. close'))
+                //console.log(this.props.result.get(value).get('4. close'))
                 temp2 = temp2.concat([parseFloat(this.props.result.get(value).get('4. close'))])
             }.bind(this))
             //console.log('temp2: ', temp2);

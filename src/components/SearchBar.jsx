@@ -3,17 +3,71 @@ import {connect} from 'react-redux'
 import Graphic from './Graphic';
 import CustomModal from './CustomModal';
 import axios from 'axios';
+import {round10} from '../utils/math'
 //import loading from '../loading.jpg'
 
 export class SearchBar extends Component{
   constructor(props) {
     super(props);
-    //this.state = {count: props.initialCount};
+    this.state = {showModal: false};
+    this.executeTransaction = this.executeTransaction.bind(this);
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
+    this.buyOperation = this.buyOperation.bind(this);
+    this.isValidBuy = this.isValidBuy.bind(this)
+  }
+  open(item, currentPrice) {
+        
+        this.setState({ showModal: true });
+        //console.log(this.state.item)
+  }
+  close() {
+      return this.setState({ showModal: false });
+  }
+  executeTransaction(cantidad, currentPrice){
+      this.setState({ showModal: false })
+      console.log('COMPRADO')
+      //axios call should return action
+      if(this.props.result && currentPrice && cantidad){
+          const ticker = this.props.stock;
+          const name = this.props.stock;
+          const price = currentPrice;
+          const amount = cantidad
+          const userId = this.props.userId
+          axios.post('http://127.0.0.1:3000/buy/' + userId, {
+              ticker: ticker,
+              name: name,
+              price: price,
+              amount: amount
+          }).then(function(result){
+
+              return this.props.actions.buy();
+          }.bind(this)).catch(function(error){
+              console.log(error)
+          })
+      }
+      
+  }
+  buyOperation(currentCashBalance, cantidad, price){
+      if(cantidad <= 0){
+          return currentCashBalance;
+      }
+      return round10(currentCashBalance - cantidad * price - 6.75)
+  }
+  isValidBuy(cantidad){
+      if(this.props.result){
+          if(cantidad <= 0){
+              return false;
+          }
+          return true;
+      }
+      return false;
   }
 
   stockSearch(event){
     event.preventDefault();
     //console.log('SEARCH')
+    console.log('blasda')
     const func = this.refs.fn.value;
     const stock = this.refs.search.value;
     let encodedURI;
@@ -51,7 +105,7 @@ export class SearchBar extends Component{
         }
         return this.props.actions.fetchingSuccess(stock, result)
     }.bind(this)).catch(function(error){
-       
+      console.log(error)
       return this.props.actions.fetchingFail(true)
     }.bind(this));
     return this.props.actions.fetchingFromApi();
@@ -76,7 +130,7 @@ export class SearchBar extends Component{
             <button className="Button" type="submit">Buscar</button>
           </form>            
           <br />
-          <img src='./loading.jpg' alt="" className="App-logo"/>
+          <img src = './loading.jpg' alt="" className="App-logo"/>
           </div> 
       )
     }else{
@@ -118,9 +172,15 @@ export class SearchBar extends Component{
               <option value="TIME_SERIES_MONTHLY">Monthly</option>
             </select>
             <button className="Button" type="submit">Buscar</button>
+            <button className="Button" type="button" onClick={this.open}>Comprar</button>
           </form>            
           <br />
+          
           <Graphic stock = {this.props.stock} result = {this.props.result}/>
+          <CustomModal ticker = {this.props.stock} currentCashBalance = {this.props.currentCashBalance} transaction = 'Compra'
+          item = {this.props.result || ''}  showModal = {this.state.showModal} onClose = {this.close} 
+          executeTransaction = {this.executeTransaction} operation = {this.buyOperation} 
+          isValid = {this.isValidBuy}/>
         </div>  
         )
       }    

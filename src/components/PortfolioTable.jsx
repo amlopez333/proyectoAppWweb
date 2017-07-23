@@ -55,7 +55,7 @@ const PortfolioTable = React.createClass({
     },
     isValidSell: function(cantidad){
         if(this.state.item){
-            if(this.state.item.get('cantidad') < cantidad){
+            if(this.state.item.get('cantidad') < cantidad || cantidad <=0){
                 return false;
             }
             return true;
@@ -104,4 +104,4 @@ const mapDispatchToProps = function (dispatch) {
     };
 };
 
-export const PortfolioContainer = connect(mapStateToProps, mapDispatchToProps)(PortfolioTable);
+export const PortfolioContainer = connect(null, mapDispatchToProps)(PortfolioTable);

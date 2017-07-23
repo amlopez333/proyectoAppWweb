@@ -64,12 +64,11 @@ router.post('/register', function(req, res, next){
             return res.status(420).json({message: 'Error registering ' + error.message});
         }
         connection.close();
-        return res.status(200).json({message: 'Registered'})  
+        return res.status(201).json({message: 'Registered'})  
     })
 });
 router.post('/buy/:userId', function(req, res, next){
     const userId = req.params.userId;
-    const ssn = req.body.ssn;
     const ticker = req.body.ticker;
     const name = req.body.name
     const price = Number(req.body.price);
@@ -83,7 +82,7 @@ router.post('/buy/:userId', function(req, res, next){
         return next(error);
     });
     const buy = new buySchema({
-        ssn: ssn,
+        userId: userId,
         ticker: ticker,
         name: name,
         price: price,
@@ -91,11 +90,24 @@ router.post('/buy/:userId', function(req, res, next){
     });
     buy.save(function(error, result){
         if(error){
+            connection.close();
             return res.status(420).json({message: 'Error buying ' + error.message});
         }
-        userSchema.findByIdAndUpdate(userId, [{portfolio: {_id: Schema.Types.ObjectId, ticker: ticker, name: name, priceBought: price, amount: amount}}], {new: true, upsert: true})
-        connection.close();
-        return res.status(203).json({message: 'Created'});
+        userSchema.findById(userId, function(error, user){
+            if(error){
+                connection.close();
+                return res.status(420).json({message: 'Error selling ' + error.message});
+            }
+            user.portfolio.push({_id: mongoose.Types.ObjectId(), ticker: ticker, name: name, price: price, dateBought: new Date(), amount: amount })
+            user.currentCashBalance -= price*amount - 6.75
+            //console.log(user.portfolio.id(_id).amount);
+            user.save(function(error, result){
+                console.log(error, result);
+            })
+            connection.close();
+            return res.status(201).json({message: 'Created'});
+        })
+       
     });
 });
 router.post('/sell/:userId', function(req, res, next){
@@ -140,7 +152,7 @@ router.post('/sell/:userId', function(req, res, next){
                 //console.log(user.portfolio.id(_id).amount);
                 })
                 connection.close();
-                return res.status(203).json({message: 'Created'});
+                return res.status(201).json({message: 'Created'});
             }
             user.portfolio.id(_id).amount -= amount
             user.currentCashBalance += price*amount - 6.75
@@ -149,7 +161,7 @@ router.post('/sell/:userId', function(req, res, next){
                 console.log(error, result);
             })
             connection.close();
-            return res.status(203).json({message: 'Created'});
+            return res.status(201).json({message: 'Created'});
         })
 });
 router.get('/portfolios/:userId', function(req, res, next){

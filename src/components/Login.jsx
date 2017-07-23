@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 const assign = Object.assign //|| import Object.assign from 'object-assign';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
+import LoadingIcon from './LoadingIcon';
 const LoginForm = React.createClass( {
   getInitialState: function(){
     return {email: '',
@@ -31,9 +32,9 @@ const LoginForm = React.createClass( {
                 onChange={this.onChangePassword} ref = 'password'/>
             </FormGroup>
             <FormGroup className="LoginRegisterForm">
-              <Button  className="LoginRegisterButton" bsStyle='primary' block onClick={this.login}>
+              {this.props.isLoading ? <LoadingIcon /> : <Button  className="LoginRegisterButton" bsStyle='primary' block onClick={this.login}>
                   Iniciar Sesión
-              </Button>
+              </Button>}
             </FormGroup>
           </Col>
           {/*this.props.currentlySending ? (
@@ -62,7 +63,7 @@ const LoginForm = React.createClass( {
       return alert(error);
     }.bind(this))
       //algo mas elegante
-    return alert('Iniciando Sesion...');
+    return this.props.load();
   }
 
 })

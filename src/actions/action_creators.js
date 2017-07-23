@@ -41,6 +41,12 @@ export const getPortfolio = function(currentCashBalance, items){
     }
 }
 
+export const load = function(){
+    return{
+        type: 'LOADING'
+    }
+}
+
 import api from '../api'
 
 export function fetchStock(fun, stock){
