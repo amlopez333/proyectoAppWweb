@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import Graphic from './Graphic';
 import CustomModal from './CustomModal';
+import StockInfo from './StockInfo';
 import axios from 'axios';
 import {round10} from '../utils/math'
 //import loading from '../loading.jpg'
@@ -175,7 +176,7 @@ export class SearchBar extends Component{
             <button className="Button" type="button" onClick={this.open}>Comprar</button>
           </form>            
           <br />
-          
+          <StockInfo ticker = {this.props.stock || ''} item = {this.props.result}/>
           <Graphic stock = {this.props.stock} result = {this.props.result}/>
           <CustomModal ticker = {this.props.stock} currentCashBalance = {this.props.currentCashBalance} transaction = 'Compra'
           item = {this.props.result || ''}  showModal = {this.state.showModal} onClose = {this.close} 

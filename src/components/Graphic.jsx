@@ -3,14 +3,11 @@ import {connect} from 'react-redux';
 import {fetchingFromApi} from '../actions/action_creators';
 import LineChart from 'react-linechart';
 import {parseFlatArray} from 'react-linechart';
-import d3 from 'd3';
+
 console.log(parseFlatArray);
 
 class Graphic extends Component{
-    xParser(){
-        //console.log('fetch', isDate)
-        isDate ? d3.time.format("%Y-%m-%d").parse : ((x) => x)
-    }
+   
     render(){                           
         //console.log(temp)
         //console.log(this.props.result.splice(0,20))
@@ -37,6 +34,7 @@ class Graphic extends Component{
             //var spliced = temp2.splice(0,20)
             //spliced.reverse();
             var po = Object.keys(this.props.result.toJS()).sort().map(function(element, i){
+                //console.log(element)
                 return {date: i, price: temp2[i]}
             });
             po = parseFlatArray(po, 'date', 'price')
@@ -64,6 +62,8 @@ class Graphic extends Component{
                     hideXLabel
                     data={po}
                     margins = { {top: 50, right: 20, bottom: 50, left: 100} }
+                    hidePoints
+                    
                 />
             </div>
         );

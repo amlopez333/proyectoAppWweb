@@ -74,6 +74,7 @@ const PortfolioTable = React.createClass({
                             openSellModal={this.open}
                         />
                     </Table>
+                    <h3>{'Efectivo Actual: $' + this.props.currentCashBalance}</h3>
                 </Col>
                 <CustomModal currentCashBalance = {this.props.currentCashBalance} transaction = 'Venta'
                 item = {this.state.item || ''} currentPrice = {this.state.currentPrice || ''} showModal = {this.state.showModal} onClose = {this.close} 

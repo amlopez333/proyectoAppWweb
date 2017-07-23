@@ -189,7 +189,7 @@
    margin: 15%;
  }
 
-.ListButton{
+.ListButton, .ListButton:focus{
     text-align: center;
     border-radius: 15px;
     border-style: normal;
@@ -213,6 +213,11 @@
     background-color: #8c6954;
     font-family: Arial, Helvetica, sans-serif;
  }
+.ListButton:active{
+  color: white;
+    background-color: blue !important;
+}
+
 
  th{
    background-color: #59323c;
@@ -295,7 +300,50 @@
   margin-left: 30px;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+dl:after {content:"";display:table;clear:both;}
+dd {
+    padding:.5em 0;
+}
+dl {
+    width:100%;
+}
+dt, dd {
+    display:inline-block;
+    width:30%;
+}
+dt {
+    text-align:right;
+    font-weight:bold;
+    clear:left;
+    float:left;
+}
+dd {
+    width:70%;
+    padding-left:1em;
+    clear:right;
+}
+dd + dd {
+    float:right;
+    clear:both;
+}
+dt:first-child {
+    padding-top:.5em;
+}
+dd + dt {
+   clear:both;
+    padding-top:.5em;
+}
+dt + dt {
+    width: 100%;
+    float: none;
+    padding: 0 70% 0 0;
+}
+dt + dt + dd {
+    margin-top: -2em;
+}
+dt + dt + dd + dt {
+    margin-top: 2em;
+}
 /**/
 
 @media (max-width: 1280px) {

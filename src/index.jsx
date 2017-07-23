@@ -14,6 +14,7 @@ import { HomeContainer } from './components/Home';
 import { SearchBarContainer} from './components/Search';
 import { LoginContainer} from './components/LoginContainer';
 import { RegisterContainer} from './components/RegisterContainer';
+import  FrequentQuestion  from './components/FrequentQuestion';
 
 import axios from 'axios'; // hacer requests http
 
@@ -28,35 +29,6 @@ const createStoreDevTools = compose(
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducer);
 //const store = createStoreDevTools(reducer);
-
-const getPortafolio = function () {
-    return axios.get('http://127.0.0.1:3000/portfolios/596de5f4946bf6c3fb2fd999');
-};
-const getResponsables = function () {
-    return axios.get('/api/personas');
-};
-const getCategorias = function () {
-    return axios.get('/api/categorias');
-};
-//conccurent requests
-/*axios.all([getPortafolio()]).then(axios.spread(function (portafolio) {
-    store.dispatch({
-        type: 'SET_STATE',
-        state: {
-            currentCashBalance: portafolio.data.data.currentCashBalance,
-            items: portafolio.data.data.portfolio,
-        }
-    });
-    //console.log(portafolio)
-})).catch(function (error) {
-    store.dispatch({
-        type: 'SET_STATE',
-        state: {
-            dbError: true 
-        }
-    });
-    console.error(error.message);
-});*/
 
 store.dispatch({
     type: 'SET_STATE',
@@ -79,6 +51,7 @@ const routes =
         <Route path='/register' component={RegisterContainer} />
         <Route path='/portfolio' component={HomeContainer} />
         <Route path='/search' component={SearchBarContainer} />
+        <Route path='/faq' component={FrequentQuestion}/>
     </Route>
                             
     

@@ -49,9 +49,9 @@ const CustomModal = React.createClass({
         const comission = this.props.transaction === 'Venta' ? -6.75 : 6.75
     return (
       <div>
-        <Modal animation show={this.props.showModal} onHide={this.closeModal}>
+        <Modal animation autoFocus = {false} show={this.props.showModal} onHide={this.closeModal} keyboard = {true}>
           <Modal.Header className="ModalHeader" closeButton onHide={this.closeModal}>
-            <Modal.Title className="ModalTitle">{ transaction + ' ' + ticker} </Modal.Title>
+            <Modal.Title className="ModalTitle">{ transaction + ' ' + ticker.toUpperCase()} </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <h4 className="ModalReminder">Recuerde que hay una comisión de $6.75 por transacción.</h4>

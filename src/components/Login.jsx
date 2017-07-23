@@ -62,7 +62,6 @@ const LoginForm = React.createClass( {
       //algo más elegante
       return alert(error);
     }.bind(this))
-      //algo mas elegante
     return this.props.load();
   }
 
