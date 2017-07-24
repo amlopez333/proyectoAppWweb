@@ -76,7 +76,7 @@ const RegisterForm = React.createClass( {
     if(!name || !lastName || ! ssn || !email || !password){
       return;
     }
-    axios.post('http://127.0.0.1:3000/register/', {name: name, lastName: lastName, 
+    axios.post('/register/', {name: name, lastName: lastName, 
       ssn: ssn, email: email, password: password}).then(function(response){
           //console.log(response);
           //algo mas elegante.

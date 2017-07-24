@@ -35,7 +35,7 @@ export class SearchBar extends Component{
           const price = currentPrice;
           const amount = cantidad
           const userId = this.props.userId
-          axios.post('http://127.0.0.1:3000/buy/' + userId, {
+          axios.post('/buy/' + userId, {
               ticker: ticker,
               name: name,
               price: price,

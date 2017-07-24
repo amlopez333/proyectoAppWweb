@@ -32,7 +32,7 @@ const PortfolioTable = React.createClass({
             const price = this.state.currentPrice;
             const amount = cantidad
             const userId = this.props.userId
-            axios.post('http://127.0.0.1:3000/sell/' + userId, {
+            axios.post('/sell/' + userId, {
                 portfolioId: portfolioId,
                 ticker: ticker,
                 name: name,

@@ -19,7 +19,7 @@ const Home = React.createClass({
     },
     getPortfolio: function(){
         if(this.props.userId && !this.props.currentCashBalance){
-            axios.get('http://127.0.0.1:3000/portfolios/' + this.props.userId).then(function(response){
+            axios.get('/portfolios/' + this.props.userId).then(function(response){
                 let currentCashBalance = response.data.data.currentCashBalance;
                 let items = response.data.data.portfolio
                 return this.props.getPortfolio(currentCashBalance, items)

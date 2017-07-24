@@ -54,7 +54,7 @@ const LoginForm = React.createClass( {
     if(!email || !password){
       return;
     }
-    axios.post('http://127.0.0.1:3000/login/', {email: email, password: password}).then(function(response){
+    axios.post('/login/', {email: email, password: password}).then(function(response){
           //browserHistory.push('/portfolio');
           console.log(response);
           return this.props.login(response.data.userId);

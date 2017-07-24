@@ -7,7 +7,7 @@ const routes = require('./routes');
 const app = express();
 const server = http.createServer(app);
 app.set('port', process.env.PORT || 3000);
-app.use('/', express.static(path.resolve(__dirname)));
+app.use('/', express.static(path.resolve(__dirname, 'dist')));
 console.log(__dirname);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
