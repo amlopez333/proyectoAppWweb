@@ -6,8 +6,80 @@ Para instalar las dependencias nada mas hay que hacer
 ## GIT
 * [Formato de commits](http://udacity.github.io/git-styleguide/)
 
-## Consideraciones importantes
-1. Olman, vuelva a correr npm install. Ya ahí puse babel-preset-react y lo que ocupamos para MongoDB. 
+## Dependencias externas
+1. Necesita tener instalado `NodeJS >=v4.x.x`
+2. Necesita tener `MongoDB` instalado
+3. La estructura de la base de datos es la siguiente
+   ```json
+   1. users: {  
+         name: {type: String, required: true, trim: true},  
+         lastName: {type: String, required: true, trim: true},  
+         ssn: {type: String, required: true, trim: true},  
+         email: {type: String, required: true, trim: true},  
+         password: {type: String, required: true, trim: true},  
+         accountType: {type: String, required: true},  
+         accountNumber: {type: String, required: true},  
+         currentCashBalance: {type: Number, required: true},  
+         portfolio: [{  
+           _id: {type: Schema.Types.ObjectId, required: true},  
+           ticker: String,  
+           name: String,  
+           price: Number,  
+           dateBought: {type: Date, default: Date.now},  
+           amount: Number  
+         }]  
+      }
+   
+   2. buys: {  
+         userId: {type: Schema.Types.ObjectId, required: true},  
+         ticker: {type: String, required: true},  
+         name: {type: String, required: true},  
+         price: {type: Number, required: true},  
+         date: {type: Date, default: Date.now},  
+         amount: {type: Number, required: true}  
+      }
+   
+   3. sells: {
+         userId: {type: Schema.Types.ObjectId, required: true},
+         ticker: {type: String, required: true},
+         name: {type: String, required: true},
+         price: {type: Number, required: true},
+         date: {type: Date, default: Date.now},
+         amount: {type: Number, required: true}
+      }
+   ```
+   Este Schema es basado en el Schema de Mongoose. A la hora de crear las tablas en MongoDB no es necesario crear el esquema. 
+   El mapeo de este Schema se puede encontrar en `models`.
+4. La dirección de la base de datos es `mongodb://localhost/daquantrader` por defecto. En caso que esté en otra dirección esta se debe especificar 
+como variable de ambiente:  
+   
+   En Linux:  
+   >export DB=[`mongodb://hostaddress/dbname`]
+
+   En Windows:
+   >setx DB=[`mongodb://hostaddress/dbname`]
+
+##Uso
+1. Ejecutar `mongod`. Este se encuentra en el directorio donde haya instalado 'MongoDB' en Windows. En linux basta con ejecutar `sudo mongod`.
+2. Ejecutar `npm install` para instalar las dependencias.
+3. Ejecutar `npm start` para iniciar el servidor.  
+   Este escucha en la dirección `127.0.0.1:3000` por defecto. Para cambiar la dirección se debe especifar `IP` y `PORT` como variables de ambiente:
+
+   En Linux:  
+   >export PORT=[`desiredport`]
+   >export IP=[`desiredip`]
+   
+   En Windows:
+   >setx PORT=[`desiredport`]
+   >setx IP=[`desiredip`]
+
+## Compilación
+
+1. Si está en ambiente de desarrollo, ejecutar `npm run devbuild`.
+2. Si está en ambiente de producción, ejecutar `npm run build`.
+
+## ESTA PARTE NO LA INCLUYA
+
 2. Mae, una vez que haya instalado MongoDB y lo tenga corriendo, es nada más de crear una base que se llame `daquantrader`, hacer tres tablas, una que se llama `users`, otra que se llama `buys` y otra que se llama `sells`. Apenas pueda le paso un script con datos para poblar esa base de una. Para más info de [MongoDB](https://docs.mongodb.com/manual/installation/?_ga=2.6662325.666629545.1500355352-1173324507.1500355352)
 Inserte los siguientes datos en db.users.insert()
 
@@ -19,23 +91,7 @@ ght : ISODate("2017-07-18T10:41:57.240Z"), amount : 60 }, { _id : ObjectId(
 "596efe5d5b66fdfae1c55f38"), ticker : "MSFT", name : "Microsoft", price :
 56.15, dateBought : ISODate("2017-07-19T06:38:21.872Z"), amount : 35 } ] }
 
-3. Para correr el server nada más haga 
-   >npm start.
-5. En la carpeta models se ve el esquema para cada una de nuestras tablas (portafolio no es una tabla pero le hice un Schema porque así se puede manejar como un Embedded Document Array, más de eso en la documentación de [Mongoose](http://mongoosejs.com/docs/2.7.x/docs/embedded-documents.html))
-4. En la carpeta `src` es donde vamos a poner todos nuestros componentes de `React`.  En la carpeta `dist` es donde va a ir todo el `HTML` y el `bundle.js`. Ahí tiene que ir el `index.html`. Ya no ocupa utilizar lo del `create-react-app` para correr `webpack-dev-server`. Solamente ocupa correr el script.
-   En Linux
-   >.\webpackdevserver.sh
-
-   En Winhoes
-   >wepackdevserver.bat
-5. Más adelante vamos a dejar de utilizar `webpack-dev-server` porque vamos a conectar con el Backend (`server.js`). Esto seguro ya para martes en la tarde. Para crear el `bundle.js` a pata corra el commmando
-   >npm run devbuild
-
-## USO
-1. Ejecutar 
-   >npm install
-2. Ejecutar
-   >npm start 
+##FIN PARTE que no hay que incluir. Lo de rutas si.
 
 ### Rutas
 
