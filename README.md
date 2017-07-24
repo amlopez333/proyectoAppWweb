@@ -59,6 +59,11 @@ como variable de ambiente:
    En Windows:
    >setx DB=[`mongodb://hostaddress/dbname`]
 
+5. Con la base de datos creada y sus tablas, ejecute `mongo populateDB.js` (lo ideal es que tenga mongo en el `path`) para poblar la base de datos con un usuario de prueba.  
+   >Email: amlopez333@gmail.com
+
+   >Password: pruebas
+
 ##Uso
 1. Ejecutar `mongod`. Este se encuentra en el directorio donde haya instalado 'MongoDB' en Windows. En linux basta con ejecutar `sudo mongod`.
 2. Ejecutar `npm install` para instalar las dependencias.
