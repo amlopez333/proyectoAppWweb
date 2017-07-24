@@ -10,7 +10,7 @@ Para instalar las dependencias nada mas hay que hacer
 1. Necesita tener instalado `NodeJS >=v4.x.x`
 2. Necesita tener `MongoDB` instalado
 3. La estructura de la base de datos es la siguiente
-   ```json
+   ```javascript
    1. users: {  
          name: {type: String, required: true, trim: true},  
          lastName: {type: String, required: true, trim: true},  
