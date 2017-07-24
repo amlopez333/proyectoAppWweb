@@ -91,7 +91,7 @@ ght : ISODate("2017-07-18T10:41:57.240Z"), amount : 60 }, { _id : ObjectId(
 "596efe5d5b66fdfae1c55f38"), ticker : "MSFT", name : "Microsoft", price :
 56.15, dateBought : ISODate("2017-07-19T06:38:21.872Z"), amount : 35 } ] }
 
-##FIN PARTE que no hay que incluir. Lo de rutas si.
+## FIN PARTE que no hay que incluir. Lo de rutas si.
 
 ### Rutas
 
